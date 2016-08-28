@@ -1,19 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Co-labs | login</title>
 	<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./styles/login.css">
 </head>
 <body>
-<div class="container">
-<div class="jumbotron">
-	<h1>Works</h1>
-</div>
-</div>
 
+	<div class="container-fluid">
+	<!--
+		<div class="row">
+			<div class="col-12-md" id="logo-header">
+				<h2>Co-Labs</h2>
+			</div>
+		</div>
+		-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+   	<h2>Co-labs</h2>
+  </div>
+</nav>
+		<div class="row">
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-6">	
+				<div id="login-box">
+					<form class="form-horizontal">
+					  <div class="form-group">
+					    <label for="inputEmail3" class="col-sm-2 control-label">User Name</label>
+					    <div class="col-sm-10">
+					      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <div class="checkbox">
+					        <label>
+					          <input type="checkbox"> Remember me
+					        </label>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default">Sign in</button>
+					    </div>
+					  </div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3">
+			</div>
+		</div>
+
+		<!--  success modal -->
+			<div class="modal fade" id="success-modal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Success</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>One fine body&hellip;</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<!-- login fail modal -->
+			<div class="modal fade" id="fail-modal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Fail</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>One fine body&hellip;</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<!-- new sign up modal -->
+			<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">New sign up</h4>
+			      </div>
+			      <div class="modal-body">
+					<form>
+					  <div class="form-group">
+					    <label for="userName-signup">UserName</label>
+					    <input type="text" class="form-control" id="userName-signup" placeholder="User Name">
+					  </div>
+					  <div class="form-group">
+					    <label for="signup-password">Password</label>
+					    <input type="password" class="form-control" id="signup-password" placeholder="Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="signup-password-auth">Re-Enter Password</label>
+					    <input type="password" class="form-control" id="signup-password-auth" placeholder="Re-Enter Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="auth-key">Unique Authorization Key</label>
+					    <input type="text" id="auth-key" class="form-control">
+					    <p class="help-block">Your Administrator will supply you with this authorization key.</p>
+					  </div>
+					  <button type="submit" class="btn btn-default">Submit</button>
+					</form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+	</div> <!-- container div -->
 
 <!-- jQuery library -->
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
 <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./javascript/login.js"></script>
 </body>
 </html>
