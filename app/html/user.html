@@ -30,26 +30,46 @@
 	<div class="row">
 		<div class="col-md-2" id="sidenav">
 			<div class="col-md-12">
-				<ul class="nav nav-pills nav-stacked" id="sidenav-main-ul">
-  					<li class="tabs">Labs
-  					  	<ul class="nav nav-pills nav-stacked" id="lab-options">
-  							<li>room 1</li>
-  							<li>room 2</li>
-  							<li>room 3</li>
-  							<li>room 4</li>
-  						</ul>
-  					</li>
-
-  					<li class="tabs">Online Users
-  						<ul class="nav nav-pills nav-stacked" id="lab-options">
-  							<li>User 1</li>
-  							<li>User 2</li>
-  							<li>User 3</li>
-  							<li>User 4</li>
-  						</ul>
-  					</li>
-
-				</ul>
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				          Labs
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				      <div class="list-group">
+				              <ul class="list-group">
+				                <li class="list-group-item">room 1</li>
+				                <li class="list-group-item">room 2</li>
+				                <li class="list-group-item">room 3</li>
+				                <li class="list-group-item">room 4</li>
+				              </ul>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingTwo">
+				      <h4 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				          Users online
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				      <div class="list-group">
+				              <ul class="list-group">
+				                <li class="list-group-item">User 1</li>
+				                <li class="list-group-item">User 2</li>
+				                <li class="list-group-item">User 3</li>
+				                <li class="list-group-item">User 4</li>
+				              </ul>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
 		</div><!-- col holds nav controls -->
 		<div class="col-md-5">
