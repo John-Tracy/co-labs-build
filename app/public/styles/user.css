@@ -1,0 +1,30 @@
+body {
+	background-color: #999;
+}
+.online-users {
+	list-style: none;
+}
+
+.active {
+	border-right: none;
+}
+
+.chatrooms-div {
+	padding: 0;
+}
+
+div {
+	border: 1px solid black; 
+}
+
+.row, .col-md-2, .col-md-12 {
+	
+}
+
+.glyphicon-globe {
+	color: green;
+}
+
+#chat-room {
+	height: 100%;
+}
