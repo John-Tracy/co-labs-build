@@ -8,56 +8,58 @@
 
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" id="container-main">
 	<div class="row">
-		<div class="col-md-2">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Co-Labs</h2>
-					<span>Welcom, User</span>
-				</div>
-			</div> <!-- logo -->
-			<div class="row">
-				<div class="col-md-12 chatrooms-div">
-					<div>
-						<h2>Labs</h2>
-					</div>
-					<div class="rooms active">
-						<h4>Creative</h4>
-					</div>
-					<div class="rooms">
-						<h4>Development</h4>
-					</div>
-					<div class="rooms">
-						<h4>Account Managment</h4>
-					</div>
-				</div>
-			</div><!-- list of chat rooms -->
-			<div class="row">
-				<div class="col-md-12 chatrooms-div">
-					<div>
-						<h3>Users online</h3>
-					</div>
-					<div>
-						<ul class="online-users">
-							<li><span class="glyphicon glyphicon-globe"></span> Won-Ton</li>
-							<li><span class="glyphicon glyphicon-globe"></span> Jimmy</li>
-							<li><span class="glyphicon glyphicon-globe"></span> Frank</li>
-							<li><span class="glyphicon glyphicon-globe"></span> Batista</li>
-						</ul>
-					</div>
-				</div>
-			</div><!-- list of users online -->
-		</div> <!-- coloumn 1 for logo, chat rooms, users online holder -->
-		<div class="col-md-5" >
-		
-		</div> <!-- displays current chat room -->
+		<div class="col-md-12">
+			<nav class="navbar navbar-default" id="top-nav">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">
+			        <p>Co-labs</p>
+			      </a>
+			    </div>
+			    <div class="navbar-header" id="greeting">
+			    <a class="navbar-brand" href="#">
+			        <p>Hello, #User</p>
+			    </a>
+			    </div>
+			  </div>
+			</nav>
+		</div><!-- nav column --> 
+	</div><!-- row1 that holds nav -->
+	<div class="row">
+		<div class="col-md-2" id="sidenav">
+			<div class="col-md-12">
+				<ul class="nav nav-pills nav-stacked" id="sidenav-main-ul">
+  					<li class="tabs">Labs
+  					  	<ul class="nav nav-pills nav-stacked" id="lab-options">
+  							<li>room 1</li>
+  							<li>room 2</li>
+  							<li>room 3</li>
+  							<li>room 4</li>
+  						</ul>
+  					</li>
+
+  					<li class="tabs">Online Users
+  						<ul class="nav nav-pills nav-stacked" id="lab-options">
+  							<li>User 1</li>
+  							<li>User 2</li>
+  							<li>User 3</li>
+  							<li>User 4</li>
+  						</ul>
+  					</li>
+
+				</ul>
+			</div>
+		</div><!-- col holds nav controls -->
 		<div class="col-md-5">
 			
-		</div> <!-- displays blog postings -->
-	</div>
+		</div><!-- col holds current chat room -->
+		<div class="col-md-5">
+			
+		</div><!-- holds blog posts -->
+	</div><!-- row2 that holds left side nav and content-->
 </div> <!-- container -->
-
 <!-- jQuery library -->
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->

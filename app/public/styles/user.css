@@ -1,30 +1,33 @@
 body {
 	background-color: #999;
 }
-.online-users {
-	list-style: none;
+#container-main {
+	padding-right: 0;
+	padding-left: 0;
 }
 
-.active {
-	border-right: none;
+#sidenav-main-ul {
+	padding-top: 40%;
+}
+#top-nav {
+	border-bottom: none;
+	margin-bottom: 0;
 }
 
-.chatrooms-div {
-	padding: 0;
+#greeting {
+	float: right;
 }
 
-div {
-	border: 1px solid black; 
+#sidenav {
+	background-color: #f8f8f8;
+	height: 900px;
 }
 
-.row, .col-md-2, .col-md-12 {
-	
+#sidenav-main-ul li {
+	padding-top: 5%;
+	padding-bottom: 5%;
 }
-
-.glyphicon-globe {
-	color: green;
-}
-
-#chat-room {
-	height: 100%;
+.tabs {
+	border-top: 0.5px solid #777777;
+	border-bottom: 0.5px solid #777777;
 }
