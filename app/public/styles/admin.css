@@ -1,3 +1,33 @@
 body {
-	background-color: blue;
+	background-color: #999;
+}
+#container-main {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+#sidenav-main-ul {
+	padding-top: 40%;
+}
+#top-nav {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+#greeting {
+	float: right;
+}
+
+#sidenav {
+	background-color: #f8f8f8;
+	height: 900px;
+}
+
+#sidenav-main-ul li {
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+.tabs {
+	border-top: 0.5px solid #777777;
+	border-bottom: 0.5px solid #777777;
 }
