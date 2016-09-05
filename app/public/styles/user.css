@@ -39,6 +39,9 @@ body {
 	height: 300px;
 	overflow-y: scroll;
 }
-.chat-input {
-	width: 100%;
+#news-content {
+	height: 355px;
+}
+#chat-input {
+	width: 85%;
 }
