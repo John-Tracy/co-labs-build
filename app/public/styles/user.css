@@ -31,3 +31,14 @@ body {
 	border-top: 0.5px solid #777777;
 	border-bottom: 0.5px solid #777777;
 }
+.chat-box {
+	margin-top: 5%;
+
+}
+.chat-box .panel-body {
+	height: 300px;
+	overflow-y: scroll;
+}
+.chat-input {
+	width: 100%;
+}
