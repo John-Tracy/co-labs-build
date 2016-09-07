@@ -28,29 +28,30 @@
 				<div id="login-box">
 					<form class="form-horizontal">
 					  <div class="form-group">
-					    <label for="inputEmail3" class="col-sm-2 control-label">User Name</label>
+					    <label for="inputUserName" class="col-sm-2 control-label">User Name</label>
 					    <div class="col-sm-10">
-					      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+					      <input type="email" class="form-control" id="inputUserName" placeholder="UserName">
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+					      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					      <div class="checkbox">
+					    <!--  <div class="checkbox">
 					        <label>
-					          <input type="checkbox"> Remember me
+					          <input type="checkbox" value="" id="remember">Remember Me
 					        </label>
-					      </div>
+					      </div> -->
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="submit" class="btn btn-default">Sign in</button>
+					      <button type="submit" class="btn btn-default" id="user-signin">Sign in</button>
+					      <button type="submit" class="btn btn-default" id="new-user">New User</button>
 					    </div>
 					  </div>
 					</form>
@@ -108,13 +109,21 @@
 			      </div>
 			      <div class="modal-body">
 					<form>
+					 <div class="form-group">
+					    <label for="firstName-signup">First Name</label>
+					    <input type="text" class="form-control" id="firstName-signup" placeholder="First Name">
+					  </div>
+					   <div class="form-group">
+					    <label for="lastName-signup">Last Name</label>
+					    <input type="text" class="form-control" id="lastName-signup" placeholder="User Name">
+					  </div>
 					  <div class="form-group">
 					    <label for="userName-signup">UserName</label>
 					    <input type="text" class="form-control" id="userName-signup" placeholder="User Name">
 					  </div>
 					  <div class="form-group">
-					    <label for="signup-password">Password</label>
-					    <input type="password" class="form-control" id="signup-password" placeholder="Password">
+					    <label for="password-signup">Password</label>
+					    <input type="password" class="form-control" id="password-signup" placeholder="Password">
 					  </div>
 					  <div class="form-group">
 					    <label for="signup-password-auth">Re-Enter Password</label>
@@ -125,7 +134,7 @@
 					    <input type="text" id="auth-key" class="form-control">
 					    <p class="help-block">Your Administrator will supply you with this authorization key.</p>
 					  </div>
-					  <button type="submit" class="btn btn-default">Submit</button>
+					  <button type="submit" class="btn btn-default" id="input-newUser">Submit</button>
 					</form>
 			      </div>
 			      <div class="modal-footer">
