@@ -1,5 +1,6 @@
-// Initialize Express and body-parser app
+// Initialize Express, express-session and body-parser 
 var express = require('express');
+session = require('express-session');
 var bodyParser = require('body-parser');
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -12,6 +13,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
+
+// initializing express session middleware
+app.use(session({
+    secret: 'colabsMiddleware',
+    resave: true,
+    saveUninitialized: false
+}));
 
 // init Web Socktet
 var http = require('http').Server(app);
