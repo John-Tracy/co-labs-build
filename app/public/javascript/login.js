@@ -1,3 +1,6 @@
+// grabs current
+var currentUrl = window.location.origin;
+
 // on-click for sign-up modal
 $('#new-user').on('click', function(){
 	$('#signup-modal').modal('toggle');
@@ -6,22 +9,57 @@ $('#new-user').on('click', function(){
 
 // on-click for sending new user info
 $('#input-newUser').on('click', function(){
+	// grabs password inputs to make sure they match.
 	var password = $('#password-signup').val().trim()
 	var passwordValid = $('#signup-password-auth').val().trim()
-	console.log(password);
-	console.log(passwordValid);
+
 	// makes certain that they are using the password they want to use.
 	if(password === passwordValid && password != ''){
 
-		console.log('password validation worked');
-		// var firstName
-		// var lastName
-		// var userName
-		// var password
+		var firstName = $('#firstName-signup').val().trim();
+		var lastName = $('#lastName-signup').val().trim();
+		var userName = $('#userName-signup').val().trim();
+		var authKey = $('#auth-key').val().trim();
+		
+		$('#signup-modal').modal('toggle');
+
+		$('#auth-key').val('');
+		$('#userName-signup').val('');
+		$('#lastName-signup').val('');
+		$('#firstName-signup').val('');
+		$('#signup-password-auth').val('');
+		$('#password-signup').val('');
+
+
+
+		$.ajax({
+			url: currentUrl + '/newUser',
+			method: 'POST',
+			data: {
+				firstName: firstName,
+				lastName: lastName,
+				userName: userName,
+				password: password,
+				authKey: authKey
+			},
+			success: function(response){
+				if(response == 'success'){
+					$('#sign-success-modal').modal('toggle');
+				}
+				else if(response == 'invalid'){
+					$('#sign-fail-modal').modal('toggle');
+				}
+			}
+
+		});
+
+
 		return false;
 	}
 	else{
+
 		console.log('passwords didnt match');
+
 		return false;
 	}
 });
