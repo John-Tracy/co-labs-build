@@ -73,10 +73,47 @@ $('#user-signin').on('click', function(){
 	$('#inputPassword').val('');
 
 	if(userName == "admin"){
-		console.log('admin ajax');
+		$.ajax({
+			url: currentUrl + '/adminLogin',
+			method: 'POST',
+			data: {
+				userName: userName,
+				password: password				
+			},
+			success: function(response){
+				if(response == 'success'){
+					window.location.reload(true);
+				}
+				else if(response == 'invalid'){
+
+				console.log(response);
+				
+				}
+			}
+		});
 	}
 	else {
-		console.log('user ajax');
+		$.ajax({
+			url: currentUrl + '/userLogin',
+			method: 'POST',
+			data: {
+				userName: userName,
+				password: password
+			},
+			success: function(response){
+				if(response == 'success'){
+					window.location.reload(true);
+				}
+				else if(response == 'invalid-username'){
+					//modal
+					console.log(response);
+				}
+				else if(response == 'invalid-password'){
+					//modal
+					console.log(response);
+				}
+			}
+		});
 	}
 	
 	return false;
