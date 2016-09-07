@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
+// init Web Socktet
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // ROUTES
 // ===========================================================
@@ -21,6 +24,6 @@ require('./app/routing/html/html-routes.js')(app);
 
 // Starts the server 
 // =============================================================
-app.listen(PORT, function() {
+http.listen(PORT, function() {
 	console.log('App listening on PORT ' + PORT);
 });
