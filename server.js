@@ -25,10 +25,22 @@ app.use(session({
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+// Database configuration
+var mongojs = require('mongojs');
+var databaseUrl = 'colabs'
+//var databaseUrl = "mongodb://heroku_2b8v8x22:e4ckvcagn9qnsk7bv7vse0mfnn@ds139725.mlab.com:39725/heroku_2b8v8x22";
+var collections = ['admin', 'users'];
+//  mongojs configuration to the db variable
+var db = mongojs(databaseUrl, collections);
+db.on('error', function(err) {
+  console.log('Database Error:', err);
+});
+
 // ROUTES
 // ===========================================================
-require('./app/routing/data/data-routes.js')(app);
+require('./app/routing/data/data-routes.js')(app, db);
 require('./app/routing/html/html-routes.js')(app);
+require('./app/routing/userAuth/auth.js')(app, db);
 
 // Starts the server 
 // =============================================================
