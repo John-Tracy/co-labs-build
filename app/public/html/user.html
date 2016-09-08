@@ -42,10 +42,10 @@
 				    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 				      <div class="list-group">
 				              <ul class="list-group">
-				                <li class="list-group-item">room 1</li>
-				                <li class="list-group-item">room 2</li>
-				                <li class="list-group-item">room 3</li>
-				                <li class="list-group-item">room 4</li>
+				                <li class="list-group-item" id="room1button">room 1</li>
+				                <li class="list-group-item" id="room2button">room 2</li>
+				                <li class="list-group-item" id="room3button">room 3</li>
+				                <li class="list-group-item" id="room4button">room 4</li>
 				              </ul>
 				      </div>
 				    </div>
@@ -75,35 +75,74 @@
 		<div class="col-md-5">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="panel panel-default chat-box">
+					<div class="panel panel-default chat-box" id="room1">
 					  <div class="panel-heading">
-					    <h3 class="panel-title">Chat Room</h3>
+					    <h3 class="panel-title">Chat Room 1</h3>
 					  </div>
-					  <div class="panel-body">
-					    <p>...message...</p>
-					    <p>...message...</p>
-					     <p>...message...</p>
-					      <p>...message...</p>
-					       <p>...message...</p>
-					        <p>...message...</p>
-					     <p>...message...</p>
-					      <p>...message...</p>
-					      <p>...message...</p>
-					      <p>...message...</p>
-					      <p>...message...</p>
-					      <p>...message...</p>
-					      <p>...message...</p>
-					      <p>...message...</p>
+					  <div class="panel-body" id="box1">
+
 					  </div>
 					  <div class="panel-footer">
 					  	<form class="form-inline">
 					  		
-					  			<input type="text" class="form-control" id="chat-input">
+					  			<input type="text" class="form-control" id="chat-input1">
 					  		
-					  		<button type="submit" class="btn btn-default">Send</button>
+					  		<button type="submit" class="btn btn-default sendMes" data-index="1" id="send1">Send</button>
 					  	</form>
 					  </div>
 					</div>
+
+					<div class="panel panel-default chat-box" id="room2" hidden>
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Chat Room 2</h3>
+					  </div>
+					  <div class="panel-body" id="box2">
+
+					  </div>
+					  <div class="panel-footer">
+					  	<form class="form-inline">
+					  		
+					  			<input type="text" class="form-control" id="chat-input2">
+					  		
+					  		<button type="submit" class="btn btn-default sendMes" data-index="2" id="send2">Send</button>
+					  	</form>
+					  </div>
+					</div>
+
+					<div class="panel panel-default chat-box" id="room3" hidden>
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Chat Room 3</h3>
+					  </div>
+					  <div class="panel-body" id="box3">
+
+					  </div>
+					  <div class="panel-footer">
+					  	<form class="form-inline">
+					  		
+					  			<input type="text" class="form-control" id="chat-input3">
+					  		
+					  		<button type="submit" class="btn btn-default sendMes" data-index="3" id="send3">Send</button>
+					  	</form>
+					  </div>
+					</div>
+
+					<div class="panel panel-default chat-box" id="room4" hidden>
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Chat Room 4</h3>
+					  </div>
+					  <div class="panel-body" id="box4">
+
+					  </div>
+					  <div class="panel-footer">
+					  	<form class="form-inline">
+					  		
+					  			<input type="text" class="form-control" id="chat-input4">
+					  		
+					  		<button type="submit" class="btn btn-default sendMes" data-index="4" id="send4">Send</button>
+					  	</form>
+					  </div>
+					</div>
+
 				</div>
 			</div>
 		</div><!-- col holds current chat room -->
@@ -127,6 +166,9 @@
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- socket io -->
+<script src="/socket.io/socket.io.js"></script>
+<!-- personal js -->
 <script type="text/javascript" src="../javascript/user.js"></script>
 </body>
 </html>

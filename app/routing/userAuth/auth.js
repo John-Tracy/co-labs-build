@@ -38,6 +38,7 @@ module.exports = function(app, db){
 			}
 			else if(password == docs[0].password){
 				req.session.userAuth = true;
+				req.session.userName = docs[0].userName;
 				res.json('success');
 
 			}

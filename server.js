@@ -42,6 +42,7 @@ require('./app/routing/data/data-routes.js')(app, db);
 require('./app/routing/html/html-routes.js')(app);
 require('./app/routing/userAuth/auth.js')(app, db);
 require('./app/routing/newUser/newUser.js')(app, db);
+require('./app/routing/sockets/socket.js')(app, db, io);
 
 // Starts the server 
 // =============================================================
