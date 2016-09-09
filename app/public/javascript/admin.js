@@ -1,7 +1,6 @@
 // grabs current url
 var currentUrl = window.location.origin;
 
-$('#blogSuccess').modal('toggle');
 //sends post to database
 $('#postNews').on('click', function(){
 	// saves data in variables

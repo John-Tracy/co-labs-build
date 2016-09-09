@@ -63,9 +63,40 @@ if(socket != undefined){
     $('#box' + roomNum).append(ptag);
   });
 }
-// socket ===============================================
+// socket stuff end ===============================================
 
 
+// gets and generates data for news panel
+var blogMaker = function(data){
+
+for(var i = data.length - 1; i >= 0; i--){
+  var blogDiv = $('<div>');
+  blogDiv.data('index', data[i]._id);
+  var horRul = $('<hr>');
+  var title = $('<h3>').html(data[i].title);
+  var body = $('<p>').html(data[i].body);
+  // building div
+  blogDiv.append(title);
+  blogDiv.append(body);
+  blogDiv.append(horRul);
+
+  // injects newly made div into html
+  $('#news-content').append(blogDiv);
+  $('#news-content').append('</br>');
+
+}
+
+};
+
+$.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
+
+  blogMaker(response);
+
+});
+
+// end news data stuff
+
+// user logout
 $('#userLogout').on('click', function(){
 
   $.ajax({url: currentUrl + '/logout', method: 'GET'}).done(function(response){

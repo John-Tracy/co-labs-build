@@ -17,5 +17,15 @@ module.exports = function(app, db){
 	// retrieves blog posts for user view
 	app.get('/getPosts', function(req, res){
 
+		db.posts.find({}, function(err, docs){
+
+			res.json(docs);
+
+		});
+
 	});
 };
+
+
+
+
