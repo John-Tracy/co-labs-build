@@ -31,3 +31,8 @@ body {
 	border-top: 0.5px solid #777777;
 	border-bottom: 0.5px solid #777777;
 }
+
+.content-panel {
+	margin-top: 2.5%;
+	margin-left: 1.25%;
+}
