@@ -1,0 +1,31 @@
+{
+  "name": "co-labs-build",
+  "version": "1.0.0",
+  "description": "collaboration software",
+  "main": "server.js",
+  "engines" : {
+    "npm": "4.x"
+  },
+  "dependencies": {
+    "express-session": "^1.14.1",
+    "body-parser": "^1.15.2",
+    "mongojs": "^2.4.0",
+    "express": "^4.14.0",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/John-Tracy/co-labs-build.git"
+  },
+  "author": "john tracy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/John-Tracy/co-labs-build/issues"
+  },
+  "homepage": "https://github.com/John-Tracy/co-labs-build#readme"
+}

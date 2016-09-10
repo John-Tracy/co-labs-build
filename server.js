@@ -29,7 +29,7 @@ var io = require('socket.io')(http);
 var mongojs = require('mongojs');
 var databaseUrl = 'colabs'
 
-var collections = ['admin', 'users', 'posts'];
+var collections = ['admin', 'users', 'posts', 'chatLogs'];
 //  mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
 db.on('error', function(err) {
