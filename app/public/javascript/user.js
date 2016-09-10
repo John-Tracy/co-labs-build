@@ -39,10 +39,24 @@ $.ajax({url: currentUrl + '/socketConnect', method: 'GET'}).done(function(respon
 
   socket.userName = response;
 
+  socket.emit('online', socket.userName);
   
 });
 
 // socket ==============================================
+
+if(socket != undefined){
+  socket.on('onlineUsers', function(nickNames){
+    $('#userPool').empty();
+    for(var i = 0; i < nickNames.length; i++){
+      var ptag = $('<p>');
+      ptag.html('<span class="glyphicon glyphicon-globe"></span> ' + nickNames[i]);
+      $('#userPool').append(ptag);
+    }
+
+
+  });
+}
 
 $(document).on('click', '.sendMes',function() {
   
