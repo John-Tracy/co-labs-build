@@ -110,6 +110,68 @@ $.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
 
 // end news data stuff
 
+// generates chat rooms and corresponding buttons
+var roomMaker = function(rooms){
+
+    var isHidden = function(param){
+      if(param == 0){
+        return '';
+      }
+      else{
+        return 'hidden';
+      }
+    }
+
+    for(var i = 0; i < rooms.length; i++){
+
+      var containDiv = $('<div class="panel panel-default chat-box hidadiv" id="' + rooms[i]._id + '" ' + isHidden(i) + '>');
+
+      var h3 = $('<h3 class="panel-title">').html(rooms[i].name);
+
+      var headingDiv = $('<div class="panel-heading">').append(h3);
+
+      var bodyDiv = $('<div class="panel-body">').attr('id', rooms[i]._id);
+        console.log(rooms[i])
+        for(var x = 0; x < rooms[i].chatLog.length; x++){
+
+          var tempP = $('<p>').html(rooms[i].chatLog[x]);
+
+          bodyDiv.append(tempP);
+
+        }
+
+      var formButton = $('<button type="submit" class="btn btn-default sendMes" data-index="' + rooms[i]._id + '">').html('Send');
+
+      var formInput = $('<input type="text" class="form-control" id="chat-input" data-index="' + rooms[i]._id + '"">');
+
+      var theForm = $('<div class="form-inline">').append(formInput);
+          theForm.append(formButton);
+
+      var footerDiv = $('<div class="panel-footer">').append(theForm);
+
+      containDiv.append(headingDiv);
+      containDiv.append(bodyDiv);
+      containDiv.append(footerDiv);
+
+      $('#roomHolder').append(containDiv);
+    }
+
+
+
+
+}
+
+// grabs room data
+$.ajax({url: currentUrl + '/getLog', method: 'GET'}).done(function(response){
+
+  roomMaker(response);
+
+});
+
+// end of chat rooms generation.
+
+
+
 // user logout
 $('#userLogout').on('click', function(){
 

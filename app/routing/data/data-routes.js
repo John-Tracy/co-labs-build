@@ -18,9 +18,17 @@ module.exports = function(app, db){
 	// saves chat logs
 	// app.post('/saveChat', function(req, res){
 
-	// 	db.chatLogs.insert({});
+	// 	db.rooms.insert({});
 
 	// });
+	app.get('/getLog', function(req, res){
+
+		db.rooms.find({}, function(err, docs){
+			console.log(docs);
+			res.json(docs);
+		});
+
+	});
 
 
 // GET routes

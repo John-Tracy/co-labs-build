@@ -29,7 +29,7 @@ var io = require('socket.io')(http);
 var mongojs = require('mongojs');
 var databaseUrl = 'colabs' //local use
 // var databaseUrl = 'mongodb://heroku_zn9vl4pb:8tepj5i8cbe62civkraoduvoc7@ds027896.mlab.com:27896/heroku_zn9vl4pb'; // heroku deployment use
-var collections = ['admin', 'users', 'posts', 'chatLogs'];
+var collections = ['admin', 'users', 'posts', 'rooms'];
 //  mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
 db.on('error', function(err) {

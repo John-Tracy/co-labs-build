@@ -12,14 +12,9 @@ app.get('/socketConnect', function(req, res){
 });
 
 
-var nickNames = [];
+var nickNames = []; // this array holds current users online to be sent all client sockets for display
 // io socket listener for on connenction
 io.on('connection', function(socket){
-
-	// io.of('/').clients(function(error, clients){
-	//   if (error) throw error;
-	//   console.log(clients); // => [PZDoMHjiu8PYfRiKAAAF, Anw2LatarvGVVXEIAAAD] 
-	// });
 	
 	var updateUsers = function(array){
 		io.emit('onlineUsers', array);
