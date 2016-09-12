@@ -150,7 +150,7 @@ var roomMaker = function(rooms){
       var bodyDiv = $('<div class="panel-body">').attr('id', rooms[i]._id + 'body');
         
         // gets chatLog for each rooms iteration
-        for(var x = 0; x < rooms[i].chatLog.length && 100; x++){
+        for(var x = 0; x < rooms[i].chatLog.length; x++){
 
           var tempP = $('<p>').html(rooms[i].chatLog[x]);
 
