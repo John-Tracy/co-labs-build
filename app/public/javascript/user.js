@@ -1,31 +1,15 @@
 // room changes ===========================
-$('#room2button').on('click', function(){
-  $('#room1').hide();
-  $('#room3').hide();
-  $('#room4').hide();
-  $('#room2').show();
-})
+function roomChanger() {
 
-$('#room1button').on('click', function(){
-  $('#room2').hide();
-  $('#room3').hide();
-  $('#room4').hide();
-  $('#room1').show();
-})
+  var idNum = $(this).attr('data-index');
 
-$('#room3button').on('click', function(){
-  $('#room1').hide();
-  $('#room2').hide();
-  $('#room4').hide();
-  $('#room3').show();
-})
+  $('.hidadiv').hide();
 
-$('#room4button').on('click', function(){
-  $('#room1').hide();
-  $('#room2').hide();
-  $('#room3').hide();
-  $('#room4').show();
-})
+  $('#' + idNum + 'room').show();
+
+};
+  
+$(document).on('click', '.changeRoom', roomChanger)
 // room changes ===========================
 
 
@@ -58,23 +42,48 @@ if(socket != undefined){
   });
 }
 
-$(document).on('click', '.sendMes',function() {
+var messageSender = function(){
+
+  var idNum = $(this).attr('data-index');
   
-  var roomNum = $(this).attr('data-index');
-  var message = $('#chat-input' + roomNum.toString()).val().trim();
-  $('#chat-input' + roomNum.toString()).val('');
-  var name = socket.userName;
+  var chatMessage = $('#' + idNum + 'input').val().trim();
 
-  socket.emit('message', message, name, roomNum.toString());
+  $('#' + idNum + 'input').val('');
 
+  var userName = socket.userName;
+
+  socket.emit('message', idNum, chatMessage, userName);
+
+      // sends chat off to be saved
+      // sting is concatnated for DB
+      var fullMes = userName + ': ' + chatMessage;
+    $.ajax({
+      url: currentUrl + '/saveChat',
+      method: 'POST',
+      data: {
+        objId: idNum,
+        message: fullMes
+      },
+      success: function(response){
+        if(response){
+          //it saved...
+        }
+      }
+     });
+  
   return false;
-});
+
+};
+// these directly use eachother... ^^^
+$(document).on('click', '.sendMes', messageSender);
 
 if(socket != undefined){
-  socket.on('new', function(message, name, roomNum){
-    var ptag = $('<p>').html(name + ': ' + message);
+  socket.on('new', function(idNum, chatMessage, userName){
+    var message = userName + ': ' + chatMessage;
 
-    $('#box' + roomNum).append(ptag);
+    var ptag = $('<p>').html(message);
+
+    $('#' + idNum + 'body').append(ptag);
   });
 }
 // socket stuff end ===============================================
@@ -112,7 +121,8 @@ $.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
 
 // generates chat rooms and corresponding buttons
 var roomMaker = function(rooms){
-
+// these stings are used 
+  
     var isHidden = function(param){
       if(param == 0){
         return '';
@@ -122,17 +132,25 @@ var roomMaker = function(rooms){
       }
     }
 
+// generates buttons for the rooms
+  for(var i = 0; i < rooms.length; i++){
+  
+    var li = $('<li class="list-group-item changeRoom" data-index="' + rooms[i]._id + '">').html(rooms[i].name);
+    $('#roomButtons').append(li);
+  }
+// generates room divs
     for(var i = 0; i < rooms.length; i++){
 
-      var containDiv = $('<div class="panel panel-default chat-box hidadiv" id="' + rooms[i]._id + '" ' + isHidden(i) + '>');
+      var containDiv = $('<div class="panel panel-default chat-box hidadiv" id="' + rooms[i]._id + 'room' + '" ' + isHidden(i) + '>');
 
       var h3 = $('<h3 class="panel-title">').html(rooms[i].name);
 
       var headingDiv = $('<div class="panel-heading">').append(h3);
 
-      var bodyDiv = $('<div class="panel-body">').attr('id', rooms[i]._id);
-        console.log(rooms[i])
-        for(var x = 0; x < rooms[i].chatLog.length; x++){
+      var bodyDiv = $('<div class="panel-body">').attr('id', rooms[i]._id + 'body');
+        
+        // gets chatLog for each rooms iteration
+        for(var x = 0; x < rooms[i].chatLog.length && 100; x++){
 
           var tempP = $('<p>').html(rooms[i].chatLog[x]);
 
@@ -142,7 +160,7 @@ var roomMaker = function(rooms){
 
       var formButton = $('<button type="submit" class="btn btn-default sendMes" data-index="' + rooms[i]._id + '">').html('Send');
 
-      var formInput = $('<input type="text" class="form-control" id="chat-input" data-index="' + rooms[i]._id + '"">');
+      var formInput = $('<input type="text" class="form-control chat-input" id="' + rooms[i]._id + 'input' + '">');
 
       var theForm = $('<div class="form-inline">').append(formInput);
           theForm.append(formButton);

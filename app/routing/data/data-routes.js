@@ -1,4 +1,4 @@
-var path = require('path');
+var mongojs = require('mongojs');
 
 module.exports = function(app, db){
 //post routes
@@ -16,15 +16,17 @@ module.exports = function(app, db){
 	});
 
 	// saves chat logs
-	// app.post('/saveChat', function(req, res){
+	app.post('/saveChat', function(req, res){
 
-	// 	db.rooms.insert({});
+	 	db.rooms.update({_id: mongojs.ObjectId(req.body.objId)},{$push: {"chatLog": req.body.message}});
 
-	// });
+	 });
+
+
 	app.get('/getLog', function(req, res){
 
 		db.rooms.find({}, function(err, docs){
-			console.log(docs);
+			
 			res.json(docs);
 		});
 

@@ -34,15 +34,16 @@
 				  <div class="panel panel-default">
 				    <div class="panel-heading" role="tab" id="headingOne">
 				      <h4 class="panel-title">
-				        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 				          Users
 				        </a>
 				      </h4>
 				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				      <div class="list-group">
 				              <ul class="list-group">
-				              	<li class="list-group-item" id="room1button" id="editUsers">Edit Users</li>
+				              	<li class="list-group-item" id="editUsers">Add Users</li>
+				              	<li class="list-group-item" id="editUsers">Edit Users</li>
 				              </ul>
 				      </div>
 				    </div>
@@ -60,6 +61,22 @@
 				              <ul class="list-group">
 				        		<li class="list-group-item" id="newPostTab">New Post</li>
 				        		<li class="list-group-item" id="editPostTab">Edit Post</li>
+				              </ul>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingThree">
+				      <h4 class="panel-title">
+				        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				          Chat Labs
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+				      <div class="list-group">
+				              <ul class="list-group">
+				              	<li class="list-group-item" id="editLab">Edit Labs</li>
 				              </ul>
 				      </div>
 				    </div>
@@ -92,8 +109,30 @@
 					  	<button class="btn btn-default" id="postNews">Post</button>
 					  </div>
 					</div>
-				</div>
-			</div>
+				<!-- panel for adding/dropping rooms -->
+					<div class="panel panel-default content-panel" id="editLabPanel">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Chat Labs</h3>
+					  </div>
+					  <div class="panel-body" id="labList">
+
+					  </div>
+					  <div class="panel-footer">
+						    <form class="form-horizontal">
+						  	  <div class="form-group">
+							    <label for="newLabInput" class="col-sm-4 control-label">Create New Chat Lab</label>
+							    <div class="col-sm-4">
+							    	<input type="text" class="form-control" id="newLabInput" placeholder="Lab Name">
+							    </div>
+							    <button type="submit" class="col-sm-2 btn btn-default" id="newLabButton">Create</button>
+							  </div>
+							
+							</form>
+					  </div>
+					</div>
+
+				</div> <!-- contains content -->
+			</div> <!-- row -->
 			<!-- list of posts to edit goes here -->
 
 			<!-- post editor goes here -->
@@ -103,7 +142,7 @@
 			<!-- user editor goes here -->
 
 			<!-- add user form goes here -->
-			
+
 		</div><!-- div holds content -->
 	</div><!-- row2 that holds left side nav and content-->
 	<!-- modals -->

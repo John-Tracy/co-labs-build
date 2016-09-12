@@ -9,7 +9,7 @@ module.exports = function(app, db){
 
 		db.admin.find({password: password}, function(err, docs){
 
-			console.log(docs);
+			
 
 			if(!docs[0]){
 				res.json('invalid');
@@ -31,7 +31,7 @@ module.exports = function(app, db){
 
 		db.users.find({userName: userName}, function(err, docs){
 
-			console.log(docs);
+			
 
 			if(!docs[0]){
 				res.json('invalid-username');

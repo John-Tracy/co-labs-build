@@ -42,6 +42,6 @@ body {
 #news-content {
 	height: 355px;
 }
-#chat-input {
-	width: 85%;
+.chat-input {
+	width: 85% !important;
 }

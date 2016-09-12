@@ -22,9 +22,9 @@ io.on('connection', function(socket){
 
 
 	// for messages to be emitted to all users
-	socket.on('message', function(message, name, roomNum){
+	socket.on('message', function(idNum, chatMessage, userName){
 
-		io.emit('new', message, name, roomNum);
+		io.emit('new', idNum, chatMessage, userName);
 
 	});
 
@@ -39,7 +39,7 @@ io.on('connection', function(socket){
 
 	// when client socket side disconnects
 	  socket.on('disconnect', function(){
-	  	console.log('logging out: ' + socket.nickName);
+	  	
 	  	nickNames.splice(nickNames.indexOf(socket.nickName), 1);
 	  	updateUsers(nickNames);
 	  });
