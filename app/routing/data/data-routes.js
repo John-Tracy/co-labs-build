@@ -120,6 +120,21 @@ module.exports = function(app, db){
 
 	});
 
+//==================
+//Edit/add users
+//==================
+// gets users data for admin
+	app.get('/getUsers', function(req, res){
+
+	});
+// edits user
+	app.post('/editUser', function('req, res'){
+
+	});
+// adds user(from admin)
+	app.post('/addUser', function(req, res){
+
+	});
 
 
 };
