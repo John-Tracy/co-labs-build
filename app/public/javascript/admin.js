@@ -291,7 +291,7 @@ $('#postEditorSubmit').on('click', function(){
 //brings up user editor
 $(document).on('click', '.userRow', function(){
 
-	console.log('working?');
+
 	// saves proper values in 
 	var fn = $(this).attr('data-fn'); 
 	var ln = $(this).attr('data-ln');
@@ -305,20 +305,124 @@ $(document).on('click', '.userRow', function(){
 	$('#editUserPw').val(pw)
 	//adds attr to submit button to send to db if used
 	$('#userEditorSubmit').attr('data-index', id);
+	// attr for object id in database
+	$('#userEditorDelete').attr('data-index', id);
+
 
 	// shows modal after values are set
 	$('#userEditorModal').modal('toggle');
 });
 //===========
 
+//===========
+//sends data to be updated
+$('#userEditorSubmit').on('click', function(){
+
+	var objId = $('#userEditorSubmit').attr('data-index');
+	var fName = $('#editUserFn').val().trim();
+	var lName = $('#editUserLn').val().trim();
+	var uName = $('#editUserUn').val().trim();
+	var pWord = $('#editUserPw').val().trim();
+
+	$('#editUserFn').val('');
+	$('#editUserLn').val('');
+	$('#editUserUn').val('');
+	$('#editUserPw').val(''); // put thes in ajax callback
+
+
+	$.ajax({
+		url: currentUrl + '/editUser',
+		method: 'POST',
+		data: {
+			firstName: fName,
+			lastName: lName,
+			userName: uName,
+			password: pWord,
+			id: objId
+		},
+		success: function(res){
+			if(res == 1){
+				var timeDelay;
+
+				function showPopover() {
+					$('#userEditorSubmit').popover('show');
+
+					timDelay = window.setTimeout(closePopover, 2500);
+
+				};
+
+				function closePopover() {
+
+					$('#userEditorSubmit').popover('hide');
+
+					window.clearTimeout(timeDelay);
+
+					$('#userEditorModal').modal('toggle');
+
+				};
+
+				showPopover();
+			}
+		}
+	})
+})
+
+//===========
+
+
+//===========
+// user delete
+$('#userEditorDelete').on('click', function(){
+
+	var objectId = $('#userEditorDelete').attr('data-index');
+
+	$.ajax({
+		url: currentUrl + '/deleteUser',
+		method: 'POST',
+		data: {
+			id: objectId
+		},
+		success: function(res){
+			if(res == 'done'){
+				var timeDelay;
+
+				$('#' + objectId).remove();
+
+				function showPopover() {
+					$('#userEditorDelete').popover('show');
+
+					timDelay = window.setTimeout(closePopover, 2500);
+
+				};
+
+				function closePopover() {
+
+					$('#userEditorDelete').popover('hide');
+
+					window.clearTimeout(timeDelay);
+
+					$('#userEditorModal').modal('toggle');
+
+				};
+
+				showPopover();
+			}
+		}
+	})
+
+});
+//===========
 
 //============
 //tr component
 function trMaker(data){
 
+	$('#userTable').empty();
+
 	for(var i = 0; i < data.length; i++){
 
 		var tr = $('<tr class="userRow">');
+			tr.attr('id', data[i]._id);
 			tr.attr('data-index', data[i]._id);
 			tr.attr('data-pass', data[i].password);
 			tr.attr('data-fn', data[i].firstName);

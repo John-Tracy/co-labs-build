@@ -132,9 +132,41 @@ module.exports = function(app, db){
 // edits user
 	app.post('/editUser', function(req, res){
 
+		var newFn = req.body.firstName;
+		var newLn = req.body.lastName;
+		var newUn = req.body.userName;
+		var newPassword = req.body.password;
+		var id = req.body.id;
+
+		db.users.update({_id: mongojs.ObjectId(id)}, 
+						{$set: {
+
+							firstName: newFn,
+							lastName: newLn,
+							userName: newUn,
+							password: newPassword,	
+
+							}
+						},
+						 function(err, docs){
+								res.json(docs.ok);
+						});
+
 	});
 // adds user(from admin)
 	app.post('/addUser', function(req, res){
+
+	});
+// delete user(from admin)
+	app.post('/deleteUser', function(req, res){
+
+		var id = req.body.id;
+
+		db.users.remove({_id: mongojs.ObjectId(id)}, function(err, docs){
+			if(docs.ok == 1 || docs.n == 1){
+				res.json('done');
+			}
+		});	
 
 	});
 
