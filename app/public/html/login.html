@@ -79,7 +79,7 @@
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 
-			<!-- signup fail modal -->
+			<!-- signup fail modal (invalid authkey) -->
 			<div class="modal fade" id="sign-fail-modal" tabindex="-1" role="dialog">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -96,6 +96,24 @@
 			    </div><!-- /.modal-content -->
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
+
+			<!-- signup fail modal (invalid user password verification) -->
+			<div class="modal fade" id="didntMatch" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Fail</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>Your passwords did not match&hellip;</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->			
 
 			<!-- new sign up modal -->
 			<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
@@ -133,6 +151,53 @@
 					    <p class="help-block">Your Administrator will supply you with this authorization key.</p>
 					  </div>
 					  <button type="submit" class="btn btn-default" id="input-newUser">Submit</button>
+					</form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<!-- new Admin sign up modal -->
+			<div class="modal fade" id="newAdminModal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Welcome to Co-Labs!</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<p>Fill out the form below to sign up as the Administrator of your Co-lab. You will always Log in 
+			      	to your Co-Lab with the username "admin" and the password you create below.</p>
+					<form>
+					 <div class="form-group">
+					    <label for="firstName-admin">First Name</label>
+					    <input type="text" class="form-control" id="firstName-admin" placeholder="First Name">
+					  </div>
+					   <div class="form-group">
+					    <label for="lastName-admin">Last Name</label>
+					    <input type="text" class="form-control" id="lastName-admin" placeholder="User Name">
+					  </div>
+					  <div class="form-group">
+					    <label for="password-admin">Password</label>
+					    <input type="password" class="form-control" id="password-admin" placeholder="Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="admin-password-auth">Re-Enter Password</label>
+					    <input type="password" class="form-control" id="admin-password-auth" placeholder="Re-Enter Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="new-auth-key">Unique Authorization Key</label>
+					    	<p class="help-block">This is what you will give to your users so they can create an account.</p>
+					    <input type="text" id="new-auth-key" class="form-control">
+					  </div>
+					  <div class="form-group">
+					    <label for="veri-auth-key">Repeat Authorization Key</label>
+					    <input type="text" id="veri-auth-key" class="form-control">
+					  </div>
+					  <button type="submit" class="btn btn-default" id="input-newAdmin">Submit</button>
 					</form>
 			      </div>
 			      <div class="modal-footer">

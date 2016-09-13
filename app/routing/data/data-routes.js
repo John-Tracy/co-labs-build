@@ -8,7 +8,8 @@ module.exports = function(app, db){
 
 		db.posts.insert({
 			title: req.body.postTitle,
-			body: req.body.postBody
+			body: req.body.postBody,
+			comments: []
 		});
 
 		res.json('success');

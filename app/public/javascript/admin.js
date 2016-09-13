@@ -17,6 +17,10 @@ $('#postNews').on('click', function(){
 		success: function(response){
 			if(response = 'success'){
 				$('#blogSuccess').modal('toggle');
+				// empties div to delete repeat data in editor panel
+				$('#postList').empty();
+				// function to refresh blog edit data
+				getBlogPosts();
 			}
 		}
 	});
@@ -146,30 +150,41 @@ $('#newLabButton').on('click', function(){
 
 //==================================
 // Post Edit/Delete logic
-$.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
+function getBlogPosts(){
+	$.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
 
-	for(var i = response.length -1; i >= 0; i--){
-		
-		var li = $('<li class="list-group-item">').html('Title: ' + response[i].title);
-			li.attr('id', response[i]._id + 'postli');
+		if(response[0] != undefined){
+			for(var i = response.length -1; i >= 0; i--){
 
-		var delIcon = $('<span class="glyphicon glyphicon-trash delPost">').attr('data-index', response[i]._id);
+				$('#postInstruct').html('Posts, for your last to your first...');
+				var titleSpan = $('<span id="' + response[i]._id + 'titleText' + '">').html(response[i].title)
+				var li = $('<li class="list-group-item">').html('Title: ');
+					li.append(titleSpan);
+					li.attr('id', response[i]._id + 'postli');
 
-		var editIcon = $('<span class="glyphicon glyphicon-pencil editPost">').attr('data-index', response[i]._id);
-			editIcon.attr('data-title', response[i].title);
-			editIcon.attr('data-body', response[i].body);
+				var delIcon = $('<span class="glyphicon glyphicon-trash delPost">').attr('data-index', response[i]._id);
 
-		var pTag = $('<p>');
-			pTag.append(delIcon);
-			pTag.append('<-delete-|-edit->')
-			pTag.append(editIcon);
+				var editIcon = $('<span class="glyphicon glyphicon-pencil editPost">').attr('data-index', response[i]._id);
+					editIcon.attr('id', response[i]._id + 'edit')
+					editIcon.attr('data-title', response[i].title);
+					editIcon.attr('data-body', response[i].body);
 
-			li.append(pTag);
+				var pTag = $('<p>');
+					pTag.append(delIcon);
+					pTag.append('<-delete-|-edit->')
+					pTag.append(editIcon);
 
-		$('#postList').append(li)
-	}
+					li.append(pTag);
 
-});
+				$('#postList').append(li)
+			}
+		}
+		else if(response[0] == undefined){
+			$('#postInstruct').html('No Posts at this time...');
+		}
+
+	});
+};
 
 	// delete post
 $(document).on('click', '.delPost', function(){
@@ -197,11 +212,11 @@ $(document).on('click', '.delPost', function(){
 $(document).on('click', '.editPost', function(){
 
 	var currentId = $(this).attr('data-index');
-	console.log(currentId);
+	
 	var currentTitle = $(this).attr('data-title');
-	console.log(currentTitle);
+
 	var currentBody = $(this).attr('data-body');
-	console.log(currentBody);
+
 
 	$('#editPostTitle').val('');
 	$('#editPostBody').val('');
@@ -218,11 +233,11 @@ $(document).on('click', '.editPost', function(){
 $('#postEditorSubmit').on('click', function(){
 
 	var dbId = $('#postEditorSubmit').attr('data-index');
-	console.log(dbId);
+
 	var newTitle = $('#editPostTitle').val().trim();
-	console.log(newTitle);
+
 	var newBody = $('#editPostBody').val().trim();
-	console.log(newBody);
+
 
 	$.ajax({
 		url: currentUrl + '/editPost',
@@ -234,15 +249,29 @@ $('#postEditorSubmit').on('click', function(){
 		},
 		success: function(res){
 			if(res == 1){
+
 				var timeDelay;
 
 				function showPopover() {
 					$('#postEditorSubmit').popover('show');
-					timDelay = setTimout(closePopover, 2500);
+
+					// populates list item in edit panel with updated info
+					$('#' + dbId + 'titleText').html(newTitle);
+					$('#' + dbId + 'edit').attr('data-title', newTitle);
+					$('#' + dbId + 'edit').attr('data-body', newBody);
+
+					timDelay = window.setTimeout(closePopover, 2500);
+
 				};
-				function closePopver() {
+
+				function closePopover() {
+
 					$('#postEditorSubmit').popover('hide');
-					clearTimeout(timeDelay);
+
+					window.clearTimeout(timeDelay);
+
+					$('#postEditorModal').modal('toggle');
+
 				};
 
 				showPopover();
@@ -287,7 +316,8 @@ $('#editPostTab').on('click', function(){
 
 });
 
-
+// runs get blog posts onload
+getBlogPosts();
 
 
 

@@ -1,6 +1,66 @@
 // grabs current
 var currentUrl = window.location.origin;
 
+// ==================================================
+// checks to see if this is new deployment of Co-labs
+$.ajax({url: currentUrl + '/check', method: 'GET'}).done(function(res){
+
+	if(res == 'verified'){
+		// do nothing
+	}
+	else if(res == 'new'){
+		$('#newAdminModal').modal('toggle');
+	}
+
+});
+// on click to submit new Administrator info to database
+// to begin New Co-labs expirience
+$('#input-newAdmin').on('click', function(){
+
+	var fName = $('#firstName-admin').val().trim()
+	var lName = $('#lastName-admin').val().trim()
+	var pWord = $('#password-admin').val().trim()
+	var veriPword = $('#admin-password-auth').val().trim()
+	var authKey = $('#new-auth-key').val().trim()
+	var veriKey = $('#veri-auth-key').val().trim()
+
+	if(pWord == veriPword && authKey == veriKey){
+
+		$.ajax({
+			url: currentUrl + '/newAdmin',
+			method: 'POST',
+			data: {
+				fName: fName,
+				lName: lName,
+				pWord: pWord,
+				authKey: authKey
+			},
+			success: function(res){
+				if(res == 'success'){
+					$('#newAdminModal').modal('toggle');
+					$('#sign-success-modal').modal('toggle');
+				}
+			}
+		})
+	}
+	else if(pWord != veriPword || authKey != veriKey){
+		$('#didntMatch').modal('toggle');
+	}
+
+	// clears inputs on new admin form
+	$('#firstName-admin').val('');
+	$('#lastName-admin').val('');
+	$('#password-admin').val('');
+	$('#admin-password-auth').val('');
+	$('#new-auth-key').val('');
+	$('#veri-auth-key').val('');
+
+	return false;
+});
+// ==================================================
+
+
+
 // on-click for sign-up modal
 $('#new-user').on('click', function(){
 	$('#signup-modal').modal('toggle');
@@ -56,9 +116,9 @@ $('#input-newUser').on('click', function(){
 
 		return false;
 	}
-	else{
+	else if(password != passwordValid){
 
-		console.log('passwords didnt match');
+		$('#didntMatch').modal('toggle');
 
 		return false;
 	}
@@ -87,7 +147,7 @@ $('#user-signin').on('click', function(){
 				else if(response == 'invalid'){
 
 				console.log(response);
-				
+
 				}
 			}
 		});

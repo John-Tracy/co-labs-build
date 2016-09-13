@@ -9,8 +9,6 @@ module.exports = function(app, db){
 
 		db.admin.find({password: password}, function(err, docs){
 
-			
-
 			if(!docs[0]){
 				res.json('invalid');
 			}
