@@ -125,10 +125,12 @@ module.exports = function(app, db){
 //==================
 // gets users data for admin
 	app.get('/getUsers', function(req, res){
-
+		db.users.find({}, function(err, docs){
+			res.json(docs);
+		});
 	});
 // edits user
-	app.post('/editUser', function('req, res'){
+	app.post('/editUser', function(req, res){
 
 	});
 // adds user(from admin)

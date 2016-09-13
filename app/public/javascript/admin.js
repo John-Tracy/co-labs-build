@@ -284,12 +284,89 @@ $('#postEditorSubmit').on('click', function(){
 
 //==================================
 
+//==================================
+// edit/add users logic
+
+//===========
+//brings up user editor
+$(document).on('click', '.userRow', function(){
+
+	console.log('working?');
+	// saves proper values in 
+	var fn = $(this).attr('data-fn'); 
+	var ln = $(this).attr('data-ln');
+	var un = $(this).attr('data-un');
+	var pw = $(this).attr('data-pass');
+	var id = $(this).attr('data-index');
+
+	$('#editUserFn').val(fn)
+	$('#editUserLn').val(ln)
+	$('#editUserUn').val(un)
+	$('#editUserPw').val(pw)
+	//adds attr to submit button to send to db if used
+	$('#userEditorSubmit').attr('data-index', id);
+
+	// shows modal after values are set
+	$('#userEditorModal').modal('toggle');
+});
+//===========
+
+
+//============
+//tr component
+function trMaker(data){
+
+	for(var i = 0; i < data.length; i++){
+
+		var tr = $('<tr class="userRow">');
+			tr.attr('data-index', data[i]._id);
+			tr.attr('data-pass', data[i].password);
+			tr.attr('data-fn', data[i].firstName);
+			tr.attr('data-ln', data[i].lastName);
+			tr.attr('data-un', data[i].userName);
+		var tdFn = $('<td>').html(data[i].firstName);
+		var tdLn = $('<td>').html(data[i].lastName);
+		var tdUn = $('<td>').html(data[i].userName);
+
+			tr.append(tdLn);
+			tr.append(tdFn);
+			tr.append(tdUn);
+
+			$('#userTable').append(tr);
+
+	}
+
+};
+//============
+$('#editUsers').on('click', function(){
+
+	//ajax get method to get user data from DB
+	$.ajax({url: currentUrl + '/getUsers', method: 'GET'}).done(function(res){
+		trMaker(res);
+	});
+	// displays panel for editing users
+	openUserEditor();
+
+});
+
+
+
+//==================================
 
 
 
 // switching admin panes through side nav clicks
 
+    // opens edit user panel
+function openUserEditor(){
+
+	$('.content-panel').hide();
+
+	$('#editUserPanel').show();
+
+}
 	// opens chat lab editor
+
 $('#editLab').on('click', function(){
 
 	$('.content-panel').hide();
