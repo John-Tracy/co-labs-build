@@ -169,13 +169,46 @@
 							    									    		
 							    </tbody>
 							  </table>
-							</div>
-								<!-- col -->
+							 </div>
+							</div>	<!-- col -->
 						</div><!-- row -->
 					</div>
 
 			<!-- add user form goes here -->
-				</div> <!-- contains content -->
+				<!-- panel for creating a new user -->
+					<div class="panel panel-default content-panel" id="newUserPanel" hidden>
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Add Users</h3>
+					  </div>
+					  <div class="panel-body">
+						  <form>
+						  	  <div class="form-group">
+							    	<label for="newUserFn">First Name</label>
+							    	<input type="text" class="form-control" id="newUserFn" placeholder="">
+							  </div>
+							  	<div class="form-group">
+							    	<label for="newUserLn">Last Name</label>
+							    	<input type="text" class="form-control" id="newUserLn" placeholder="">
+							  </div>
+								<div class="form-group">
+							    	<label for="newUserUn">User Name</label>
+							    	<input type="text" class="form-control" id="newUserUn" placeholder="">
+							  	</div>
+							  	<div class="form-group">
+							   		<label for="newUserPw">Password</label>
+							    	<input type="text" class="form-control" id="newUserPw" placeholder="">
+							  </div>
+						  </form>
+					  </div>
+					  <div class="panel-footer">
+					  	<button class="btn btn-default" id="clearNewUserInputs">Clear</button>
+					  	<button class="btn btn-default" id="addNewUser" data-container="body"
+	      				data-toggle="popover" data-placement="top" data-content="User Added!">Add</button>
+					  </div>
+					</div>
+
+
+				</div> <!-- contains col content -->
 			</div> <!-- row -->
 		</div><!-- div holds content -->
 	</div><!-- row2 that holds left side nav and content-->
@@ -260,7 +293,7 @@
 	      	<button type="submit" class="btn btn-default" id="userEditorSubmit" data-container="body"
 	      	data-toggle="popover" data-placement="top" data-content="Changes Saved!">Save Changes</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-default" id="userEditorDelete" data-container="body"
+	        <button type="submit" class="btn btn-danger" id="userEditorDelete" data-container="body"
 	      	data-toggle="popover" data-placement="top" data-content="User Deleted!">Delete User</button>
 
 	      </div>

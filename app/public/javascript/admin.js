@@ -368,6 +368,73 @@ $('#userEditorSubmit').on('click', function(){
 })
 
 //===========
+//add new user
+$('#addNewUser').on('click', function(){
+
+	var fn = $('#newUserFn').val().trim();
+	var ln = $('#newUserLn').val().trim();
+	var pw = $('#newUserPw').val().trim();
+	var un = $('#newUserUn').val().trim();
+
+	if(fn != '' && ln != '' && pw != '' && un != ''){
+
+		$.ajax({
+			url: currentUrl + '/addUser',
+			method: 'POST',
+			data: {
+				fn: fn,
+				ln: ln,
+				un: un,
+				pw: pw
+			}, 
+			success: function(res){
+				if(res == 'success'){
+					
+				var timeDelay;
+
+				function showPopover() {
+					$('#addNewUser').popover('show');
+
+					timDelay = window.setTimeout(closePopover, 2500);
+
+				};
+
+				function closePopover() {
+
+					$('#addNewUser').popover('hide');
+
+					window.clearTimeout(timeDelay);
+
+					$('#newUserFn').val('');
+					$('#newUserLn').val('');
+					$('#newUserPw').val('');
+					$('#newUserUn').val('');
+
+				};
+
+				showPopover();
+				
+				}
+			}
+		})
+
+	}
+
+return false;
+});
+
+
+	// clears inputs on add new user field
+$('#clearNewUserInputs').on('click', function(){
+
+	$('#newUserFn').val('');
+	$('#newUserLn').val('');
+	$('#newUserPw').val('');
+	$('#newUserUn').val('');
+
+	return false;
+
+});
 
 
 //===========
@@ -494,6 +561,14 @@ $('#editPostTab').on('click', function(){
 	$('.content-panel').hide();
 
 	$('#editPostPanel').show();
+
+});
+
+$('#addUsers').on('click', function(){
+
+	$('.content-panel').hide();
+	
+	$('#newUserPanel').show();
 
 });
 

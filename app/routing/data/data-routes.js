@@ -156,6 +156,15 @@ module.exports = function(app, db){
 // adds user(from admin)
 	app.post('/addUser', function(req, res){
 
+		db.users.insert({
+							firstName: req.body.fn, 
+							lastName: req.body.ln,
+							userName: req.body.un,
+							password: req.body.pw
+						}, function(err, docsTwo){
+							res.json('success');
+						});
+
 	});
 // delete user(from admin)
 	app.post('/deleteUser', function(req, res){
