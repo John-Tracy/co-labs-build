@@ -20,7 +20,8 @@ body {
 
 #sidenav {
 	background-color: #f8f8f8;
-	height: 900px;
+	height: 100%;
+	padding-bottom: 100px;
 }
 
 #sidenav-main-ul li {
@@ -40,3 +41,45 @@ body {
  .delMessage{
 	text-align: center;
 }
+
+
+/* night-life color scheme
+	void - #0e0b16
+	fuschia #a239ca
+	jewel - #4717f6
+	stark - #e7dfdd
+*//*
+#top-nav, #sidenav, body{
+	background-color: #0e0b16;
+	color: #e7dfdd;
+}
+#accordion .panel-default{
+	background-color: #0e0b16
+} */
+/* antique- minimal
+	rust #b56357
+	mint b4dbc0
+	slate #eae3ea
+	sea foam #a7b3a5
+*/
+
+/* clean 
+	sky #caebf2
+	carbon #a9a9a9
+	watermelon #ff3b3f
+	neutral #efefef
+*/
+
+/* loud
+	violet- #6e3667
+	lime - #88d317
+	deep plum- #1a0315
+	shadow #535353
+*/
+
+/* retro 
+	butter #fedc3d
+	black #000000
+	azure #01abaa
+	peach #fea680
+*/

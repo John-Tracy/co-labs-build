@@ -20,7 +20,7 @@ body {
 
 #sidenav {
 	background-color: #f8f8f8;
-	height: 900px;
+	height: 100%;
 }
 
 #sidenav-main-ul li {

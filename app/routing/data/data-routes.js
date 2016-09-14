@@ -209,7 +209,7 @@ app.post('/setusersets', function(req, res){
 							firstName: req.body.fn,
 							lastName: req.body.ln,
 							userName: req.body.un,
-							password: req.body.pw,	
+							password: req.body.pw	
 
 							}
 						},
@@ -217,6 +217,24 @@ app.post('/setusersets', function(req, res){
 								res.json(docs.ok);
 						});
 
+
+});
+
+app.post('/setadminsets', function(req, res){
+
+		db.admin.update({_id: mongojs.ObjectId(req.body.id)}, 
+						{$set: {
+
+							firstName: req.body.fn,
+							lastName: req.body.ln,
+							password: req.body.pw,
+							authKey: req.body.ak	
+
+							}
+						},
+						 function(err, docs){
+								res.json(docs.ok);
+						});
 
 });
 //=======================================

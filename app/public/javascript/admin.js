@@ -1,6 +1,9 @@
 // grabs current url
 var currentUrl = window.location.origin;
 
+//connects socket
+var socket = io.connect();
+
 //sends post to database
 $('#postNews').on('click', function(){
 	// saves data in variables
@@ -16,6 +19,9 @@ $('#postNews').on('click', function(){
 		},
 		success: function(response){
 			if(response = 'success'){
+				// socket to emit to users to renew blog feed.
+				socket.emit('updateBlog');
+
 				$('#blogSuccess').modal('toggle');
 				// empties div to delete repeat data in editor panel
 				$('#postList').empty();
@@ -249,6 +255,8 @@ $('#postEditorSubmit').on('click', function(){
 		},
 		success: function(res){
 			if(res == 1){
+				// socket emits 
+				socket.emit('updateBlog');
 
 				var timeDelay;
 
@@ -575,6 +583,55 @@ $('#addUsers').on('click', function(){
 // runs get blog posts onload
 getBlogPosts();
 
+//posts new admin data to DB
+$('#adminSetsSubmit').on('click', function(){
+
+		var fn = $('#editAdminFn').val().trim();
+		var ln = $('#editAdminLn').val().trim();
+		var pw = $('#editAdminPw').val().trim();
+		var ak = $('#editadminAk').val().trim();
+		var id = $('#adminSetsSubmit').attr('data-index');
+
+		$.ajax({
+			url: currentUrl + '/setadminsets',
+			method: 'POST',
+			data: {
+
+				fn: fn,
+				ln: ln,
+				pw: pw,
+				ak: ak,
+				id: id
+
+			},
+			success: function(res){
+		      if(res == 1){
+		        var timeDelay;
+
+		        function showPopover() {
+		          $('#adminSetsSubmit').popover('show');
+
+		          timDelay = window.setTimeout(closePopover, 2500);
+
+		        };
+
+		        function closePopover() {
+
+		          $('#adminSetsSubmit').popover('hide');
+
+		          window.clearTimeout(timeDelay);
+
+		          $('#settingsModal').modal('toggle');
+
+		        };
+
+		        showPopover();
+		      }
+			}
+		})
+
+
+});
 
 // gets settings modal ready
 $('#adminSettings').on('click', function(){
@@ -592,13 +649,3 @@ $('#adminSettings').on('click', function(){
 	});
 
 });
-
-
-
-
-
-
-
-
-
-

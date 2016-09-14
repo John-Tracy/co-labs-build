@@ -1,17 +1,3 @@
-// room changes ===========================
-function roomChanger() {
-
-  var idNum = $(this).attr('data-index');
-
-  $('.hidadiv').hide();
-
-  $('#' + idNum + 'room').show();
-
-};
-  
-$(document).on('click', '.changeRoom', roomChanger)
-// room changes ===========================
-
 
 //grabs current url
 var currentUrl = window.location.origin;
@@ -93,6 +79,8 @@ if(socket != undefined){
 // gets and generates data for news panel
 var blogMaker = function(data){
 
+  $('#news-content').empty();
+
 for(var i = data.length - 1; i >= 0; i--){
   var blogDiv = $('<div>');
   blogDiv.data('index', data[i]._id);
@@ -112,13 +100,29 @@ for(var i = data.length - 1; i >= 0; i--){
 
 };
 
-$.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
+function updateBlog(){
+    $.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
 
-  blogMaker(response);
+      blogMaker(response);
 
-});
-
+    });
+}
 // end news data stuff
+
+
+// room changes ===========================
+function roomChanger() {
+
+  var idNum = $(this).attr('data-index');
+
+  $('.hidadiv').hide();
+
+  $('#' + idNum + 'room').show();
+
+};
+  
+$(document).on('click', '.changeRoom', roomChanger)
+// room changes ===========================
 
 // generates chat rooms and corresponding buttons
 var roomMaker = function(rooms){
@@ -269,3 +273,10 @@ $('#userLogout').on('click', function(){
   });
 
 });
+
+socket.on('refreshBlog', function(){
+ 
+  updateBlog();
+});
+
+updateBlog();

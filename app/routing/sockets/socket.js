@@ -41,7 +41,7 @@ io.on('connection', function(socket){
 
 	});
 
-	// to emit online user
+	//  emit new online user
 	socket.on('online', function(userName){
 		socket.nickName = userName;
 		nickNames.push(userName);
@@ -49,12 +49,20 @@ io.on('connection', function(socket){
 
 	});
 
+	// fires when admin updates or creates a  new blog post
+	socket.on('updateBlog', function(){
+		
+		io.emit('refreshBlog');
+
+	});
+
 
 	// when client socket side disconnects
 	  socket.on('disconnect', function(){
-	  	
-	  	nickNames.splice(nickNames.indexOf(socket.nickName), 1);
-	  	updateUsers(nickNames);
+	  	if(socket.nickName != undefined){
+	  		nickNames.splice(nickNames.indexOf(socket.nickName), 1);
+	  		updateUsers(nickNames);
+	  	}
 	  });
 
 });
