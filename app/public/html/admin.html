@@ -19,8 +19,15 @@
 			      </a>
 			    </div>
 			    <div class="navbar-header" id="greeting">
-			
-			        <p id="adminLogout">Howdy, Admin</p>
+					
+				<ul class="nav navbar-nav navbar-right"> 
+					<li id="fat-menu" class="dropdown"> <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Hello, Admin <span class="caret"></span> </a>
+					 <ul class="dropdown-menu" aria-labelledby="drop1"> 
+					 	<li id="adminSettings"><a href="#">Account settings</a></li>  
+					 	<li role="separator" class="divider"></li> 
+					 	<li id="adminLogout"><a href="#">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+					 </ul>
+				</ul> 
 			    
 			    </div>
 			  </div>
@@ -296,6 +303,43 @@
 	        <button type="submit" class="btn btn-danger" id="userEditorDelete" data-container="body"
 	      	data-toggle="popover" data-placement="top" data-content="User Deleted!">Delete User</button>
 
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+<!-- edit admin personal settings =================================================== -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="settingsModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Personal Settings</h4>
+	      </div>
+	      <div class="modal-body">
+			  <form>
+			  	  <div class="form-group">
+				    <label for="editAdminFn">First Name</label>
+				    <input type="text" class="form-control" id="editAdminFn" >
+				  </div>
+			  	  <div class="form-group">
+				    <label for="editAdminLn">Last Name</label>
+				    <input type="text" class="form-control" id="editAdminLn" >
+				  </div>
+			  	  <div class="form-group">
+				    <label for="editAdminPw">Password</label>
+				    <input type="text" class="form-control" id="editAdminPw" >
+				  </div>
+			  	  <div class="form-group">
+				    <label for="editadminAk">Authenication Key</label>
+				    <input type="text" class="form-control" id="editadminAk" >
+				  </div>
+			  </form>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="submit" class="btn btn-default" id="adminSetsSubmit" data-container="body"
+	      	data-toggle="popover" data-placement="top" data-content="Changes Saved!">Save Changes</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

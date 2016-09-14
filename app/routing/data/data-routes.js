@@ -179,6 +179,48 @@ module.exports = function(app, db){
 
 	});
 
+//=======================================
+//admin/ user settings (GET and POST)
+//GET's
+app.get('/getusersets', function(req, res){
+
+	db.users.find({userName: req.session.userName}, function(err, docs){
+
+		res.json(docs[0]);
+
+	});
+
+});
+
+app.get('/getadminsets', function(req, res){
+
+	db.admin.find({}, function(err, docs){
+		res.json(docs[0]);
+	});
+
+});
+
+//POST's
+app.post('/setusersets', function(req, res){
+
+		db.users.update({_id: mongojs.ObjectId(req.body.id)}, 
+						{$set: {
+
+							firstName: req.body.fn,
+							lastName: req.body.ln,
+							userName: req.body.un,
+							password: req.body.pw,	
+
+							}
+						},
+						 function(err, docs){
+								res.json(docs.ok);
+						});
+
+
+});
+//=======================================
+
 
 };
 

@@ -413,7 +413,7 @@ $('#addNewUser').on('click', function(){
 				};
 
 				showPopover();
-				
+
 				}
 			}
 		})
@@ -574,6 +574,31 @@ $('#addUsers').on('click', function(){
 
 // runs get blog posts onload
 getBlogPosts();
+
+
+// gets settings modal ready
+$('#adminSettings').on('click', function(){
+
+	$.ajax({url: currentUrl + '/getadminsets', method: 'GET'}).done(function(res){
+
+		$('#editAdminFn').val(res.firstName);
+		$('#editAdminLn').val(res.lastName);
+		$('#editAdminPw').val(res.password);
+		$('#editadminAk').val(res.authKey);
+		$('#adminSetsSubmit').attr('data-index', res._id);
+
+		$('#settingsModal').modal('toggle');
+
+	});
+
+});
+
+
+
+
+
+
+
 
 
 

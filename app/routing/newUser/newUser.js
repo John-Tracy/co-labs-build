@@ -1,6 +1,6 @@
 var path = require('path');
 
-module.exports = function(app, db, validation){
+module.exports = function(app, db){
 
 	// new user pushed to database
 	app.post('/newUser', function(req, res){

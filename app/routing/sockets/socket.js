@@ -7,7 +7,20 @@ app.get('/socketConnect', function(req, res){
 
 	var userName = req.session.userName;
 
-	res.json(userName);
+	db.users.find({userName: userName}, function(err, docs){
+
+		function capFirst(string){
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}
+
+		var fName = capFirst(docs[0].firstName);
+		
+
+		res.json({
+			userName: userName,
+			fName: fName
+		})
+	});
 
 });
 

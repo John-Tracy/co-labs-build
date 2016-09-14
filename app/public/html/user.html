@@ -11,18 +11,22 @@
 <div class="container-fluid" id="container-main">
 	<div class="row">
 		<div class="col-md-12">
-			<nav class="navbar navbar-default" id="top-nav">
+			<nav class="navbar navbar-default" id="top-nav"> 
 			  <div class="container-fluid">
 			    <div class="navbar-header">
 			      <a class="navbar-brand" href="#">
 			        <p>Co-labs</p>
 			      </a>
 			    </div>
-			    <div class="navbar-header" id="greeting">
+				<ul class="nav navbar-nav navbar-right"> 
+					<li id="fat-menu" class="dropdown"> <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Hello, <span id="greetingText"></span> <span class="caret"></span> </a>
+					 <ul class="dropdown-menu" aria-labelledby="drop1"> 
+					 	<li id="userSettings"><a href="#">Account settings</a></li>  
+					 	<li role="separator" class="divider"></li> 
+					 	<li id="userLogout"><a href="#">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+					 </ul>
+				</ul> 
 			    
-			        <p id="userLogout">Hello, #User</p>
-			    
-			    </div>
 			  </div>
 			</nav>
 		</div><!-- nav column --> 
@@ -67,74 +71,8 @@
 		<div class="col-md-5">
 			<div class="row">
 				<div class="col-md-12" id="roomHolder">
-				<!-- 
-					<div class="panel panel-default chat-box" id="room1">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Chat Room 1</h3>
-					  </div>
-					  <div class="panel-body" id="box1">
-
-					  </div>
-					  <div class="panel-footer">
-					  	<form class="form-inline">
-					  		
-					  			<input type="text" class="form-control" id="chat-input1">
-					  		
-					  		<button type="submit" class="btn btn-default sendMes" data-index="1" id="send1">Send</button>
-					  	</form>
-					  </div>
-					</div>
-
-					<div class="panel panel-default chat-box" id="room2" hidden>
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Chat Room 2</h3>
-					  </div>
-					  <div class="panel-body" id="box2">
-
-					  </div>
-					  <div class="panel-footer">
-					  	<form class="form-inline">
-					  		
-					  			<input type="text" class="form-control" id="chat-input2">
-					  		
-					  		<button type="submit" class="btn btn-default sendMes" data-index="2" id="send2">Send</button>
-					  	</form>
-					  </div>
-					</div>
-
-					<div class="panel panel-default chat-box" id="room3" hidden>
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Chat Room 3</h3>
-					  </div>
-					  <div class="panel-body" id="box3">
-
-					  </div>
-					  <div class="panel-footer">
-					  	<form class="form-inline">
-					  		
-					  			<input type="text" class="form-control" id="chat-input3">
-					  		
-					  		<button type="submit" class="btn btn-default sendMes" data-index="3" id="send3">Send</button>
-					  	</form>
-					  </div>
-					</div>
-
-					<div class="panel panel-default chat-box" id="room4" hidden>
-					  <div class="panel-heading">
-					    <h3 class="panel-title">Chat Room 4</h3>
-					  </div>
-					  <div class="panel-body" id="box4">
-
-					  </div>
-					  <div class="panel-footer">
-					  	<form class="form-inline">
-					  		
-					  			<input type="text" class="form-control" id="chat-input4">
-					  		
-					  		<button type="submit" class="btn btn-default sendMes" data-index="4" id="send4">Send</button>
-					  	</form>
-					  </div> 
-					</div> -->
+					
+					<!-- dynamically generated chat rooms go here -->
 
 				</div> 
 			</div> 
@@ -154,6 +92,46 @@
 			</div>
 		</div><!-- holds blog posts -->
 	</div><!-- row2 that holds left side nav and content-->
+<!-- modals -->
+		<!-- edit a user =================================================== -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="userSettingsModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Personal Settings</h4>
+	      </div>
+	      <div class="modal-body">
+			  <form>
+			  	  <div class="form-group">
+				    <label for="editUserFn">First Name</label>
+				    <input type="text" class="form-control" id="editUserFn" >
+				  </div>
+			  	  <div class="form-group">
+				    <label for="editUserLn">Last Name</label>
+				    <input type="text" class="form-control" id="editUserLn" >
+				  </div>
+			  	  <div class="form-group">
+				    <label for="editUserUn">Username</label>
+				    <input type="text" class="form-control" id="editUserUn" >
+				  </div>
+			  	  <div class="form-group">
+				    <label for="editUserPw">Password</label>
+				    <input type="text" class="form-control" id="editUserPw" >
+				  </div>
+			  </form>
+	      </div>
+	      <div class="modal-footer">
+	      	<button type="submit" class="btn btn-default" id="userSetsSubmit" data-container="body"
+	      	data-toggle="popover" data-placement="top" data-content="Changes Saved!">Save Changes</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+
 </div> <!-- container -->
 <!-- jQuery library -->
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
