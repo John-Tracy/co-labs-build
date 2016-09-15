@@ -1,6 +1,9 @@
 body {
 	background-color: #999;
 }
+.panel-default{
+
+}
 #container-main {
 	padding-right: 0;
 	padding-left: 0;
@@ -33,11 +36,14 @@ body {
 }
 .chat-box {
 	margin-top: 5%;
+	width: 100%;
 
 }
 .chat-box .panel-body {
-	height: 300px;
-	overflow-y: scroll;
+	max-height: 300px;
+	overflow: auto;
+	
+	position: relative;
 }
 #news-content {
 	height: 355px;

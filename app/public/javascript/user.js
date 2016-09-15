@@ -53,7 +53,7 @@ var messageSender = function(){
       },
       success: function(response){
         if(response){
-          //it saved...
+          // saved.
         }
       }
      });
@@ -61,16 +61,30 @@ var messageSender = function(){
   return false;
 
 };
+
+// $.fn.scrollView = function () {
+//   return this.each(function () {
+//     $('.panel-body').animate({
+//       scrollTop: $(this).offset().top
+//     }, 500);
+//   });
+// }
 // these directly use eachother... ^^^
 $(document).on('click', '.sendMes', messageSender);
 
 if(socket != undefined){
   socket.on('new', function(idNum, chatMessage, userName){
+    
     var message = userName + ': ' + chatMessage;
 
-    var ptag = $('<p>').html(message);
+    var pTag = $('<p>').html(message)
+    var messageList = $('#' + idNum + 'body');
+    messageList.append(pTag);
 
-    $('#' + idNum + 'body').append(ptag);
+
+    messageList.scrollTop(messageList[0].scrollHeight);
+
+
   });
 }
 // socket stuff end ===============================================
@@ -153,7 +167,8 @@ var roomMaker = function(rooms){
       var headingDiv = $('<div class="panel-heading">').append(h3);
 
       var bodyDiv = $('<div class="panel-body">').attr('id', rooms[i]._id + 'body');
-        
+
+              
         // gets chatLog for each rooms iteration
         for(var x = 0; x < rooms[i].chatLog.length; x++){
 
@@ -163,12 +178,18 @@ var roomMaker = function(rooms){
 
         }
 
+       
+
+      var form = $('<form>');
       var formButton = $('<button type="submit" class="btn btn-default sendMes" data-index="' + rooms[i]._id + '">').html('Send');
 
       var formInput = $('<input type="text" class="form-control chat-input" id="' + rooms[i]._id + 'input' + '">');
 
-      var theForm = $('<div class="form-inline">').append(formInput);
-          theForm.append(formButton);
+          form.append(formInput);
+          form.append(formButton);
+
+      var theForm = $('<div class="form-inline">').append(form);
+        
 
       var footerDiv = $('<div class="panel-footer">').append(theForm);
 
@@ -177,6 +198,8 @@ var roomMaker = function(rooms){
       containDiv.append(footerDiv);
 
       $('#roomHolder').append(containDiv);
+
+      bodyDiv.scrollTop(bodyDiv[0].scrollHeight);
     }
 
 

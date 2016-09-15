@@ -19,6 +19,7 @@ app.get('/socketConnect', function(req, res){
 		res.json({
 			userName: userName,
 			fName: fName
+		
 		})
 	});
 

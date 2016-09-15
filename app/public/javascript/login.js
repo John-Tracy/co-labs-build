@@ -178,16 +178,3 @@ $('#user-signin').on('click', function(){
 	
 	return false;
 });
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -50,7 +50,9 @@ module.exports = function(app, db){
 	// saves chat logs
 	app.post('/saveChat', function(req, res){
 
-	 	db.rooms.update({_id: mongojs.ObjectId(req.body.objId)},{$push: {"chatLog": req.body.message}});
+	 	db.rooms.update({_id: mongojs.ObjectId(req.body.objId)},{$push: {"chatLog": req.body.message}}, function(err, docs){
+	 		res.json('success');
+	 	});
 
 	 });
 
