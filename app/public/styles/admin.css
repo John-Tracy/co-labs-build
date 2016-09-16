@@ -43,7 +43,7 @@ body {
 	text-align: center;
 }
 
-a:hover {
+a:hover, a:visited, a:link {
 	text-decoration: none;
 }
 

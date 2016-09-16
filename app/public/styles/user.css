@@ -22,7 +22,7 @@ body {
 }
 
 #sidenav {
-	background-color: #f8f8f8;
+	background-color: #777777;
 	height: 100%;
 }
 
@@ -50,4 +50,22 @@ body {
 }
 .chat-input {
 	width: 85% !important;
+}
+
+a:hover, a:visited, a:link {
+	text-decoration: none;
+}
+
+.navbar-default {
+	background-color: #777777;
+	border-radius: 0;
+
+}
+
+#top-nav .navbar-brand{
+	color: #e7dfdd;
+}
+
+#drop1 {
+	color: #e7dfdd;
 }

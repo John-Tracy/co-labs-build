@@ -1,6 +1,6 @@
 body { 
 	padding-top: 100px; 
-	background-color: #00347F;
+	background-color: #999999;
 	color: white;
 }
 h2 {
@@ -22,10 +22,6 @@ h2 {
 	text-align: center;
 }
 
-
-input {
-	
-}
 
 /* modal styles */
 
