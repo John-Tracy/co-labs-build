@@ -65,6 +65,14 @@ a:hover, a:visited, a:link {
 #userTable .userRow, #sidenav .list-group-item,  .glyphicon-trash, .glyphicon-pencil{
 	cursor: pointer;
 }
+
+@media (max-width: 768px) {
+
+	#adminSettings a, #adminLogout a{
+		color: white;
+	}
+
+}
 /* night-life color scheme
 	void - #0e0b16
 	fuschia #a239ca
