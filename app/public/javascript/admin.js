@@ -164,7 +164,7 @@ function getBlogPosts(){
 		if(response[0] != undefined){
 			for(var i = response.length -1; i >= 0; i--){
 
-				$('#postInstruct').html('Posts, for your last to your first...');
+				$('#postInstruct').html('Posts, from your last to your first...');
 				var titleSpan = $('<span id="' + response[i]._id + 'titleText' + '">').html(response[i].title)
 				var li = $('<li class="list-group-item">').html('Title: ');
 					li.append(titleSpan);
@@ -179,8 +179,11 @@ function getBlogPosts(){
 
 				var pTag = $('<p>');
 					pTag.append(delIcon);
-					pTag.append('<-delete-|-edit->')
+					pTag.append('<-Delete-| |-Edit->')
 					pTag.append(editIcon);
+
+					li.append('<br>');
+					li.append('<br>');
 
 					li.append(pTag);
 

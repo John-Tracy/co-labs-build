@@ -61,10 +61,8 @@ a:hover, a:visited, a:link {
 #drop1 {
 	color: #e7dfdd;
 }
-#sidenav .list-group-item {
-	cursor: pointer;
-}
-#userTable .userRow {
+
+#userTable .userRow, #sidenav .list-group-item,  .glyphicon-trash, .glyphicon-pencil{
 	cursor: pointer;
 }
 /* night-life color scheme
