@@ -45,6 +45,42 @@
 			</div>
 		</div>
 
+			<!-- signin fail modal (invalid username) -->
+			<div class="modal fade" id="username-fail-modal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Failed to login!</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>User name given is not signed up with this instance of Co-labs&hellip;</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<!-- signin fail modal (invalid password) -->
+			<div class="modal fade" id="password-fail-modal" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Failed to Login!</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>The password given was incorrect&hellip;</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
 		<!--  success modal for sign up -->
 			<div class="modal fade" id="sign-success-modal" tabindex="-1" role="dialog">
 			  <div class="modal-dialog" role="document">
@@ -86,20 +122,20 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <button type="button" class="close backto" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Fail</h4>
 			      </div>
 			      <div class="modal-body">
-			        <p>Your passwords did not match&hellip;</p>
+			        <p>Your passwords did not match or you left a field blank&hellip;</p>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-default backto" data-dismiss="modal">Close</button>
 			      </div>
 			    </div><!-- /.modal-content -->
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->			
 
-			<!-- new sign up modal -->
+			<!-- new sign up modal (USER)-->
 			<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -191,6 +227,7 @@
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 	</div> <!-- container div -->
+
 
 <!-- jQuery library -->
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>

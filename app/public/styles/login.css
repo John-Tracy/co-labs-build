@@ -1,8 +1,15 @@
 body { 
 	padding-top: 100px; 
-	background-color: #999999;
-	color: white;
+	height: 100%;
+	width: 100%;
+	background-color: #ffffff;
+	color: #999999;
+
+	background: url("../styles/collab.jpg") top left no-repeat;
+	
+
 }
+
 h2 {
 	text-align: center;
 	margin-top: 5%;
@@ -26,6 +33,7 @@ h2 {
 /* modal styles */
 
 .modal-content {
-	background-color: #0053CC;
+	background-color: #eae3ea;
+	color: #b56357;
 } 
 

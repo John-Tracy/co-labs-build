@@ -47,13 +47,7 @@ $('#input-newAdmin').on('click', function(){
 		$('#didntMatch').modal('toggle');
 	}
 
-	// clears inputs on new admin form
-	$('#firstName-admin').val('');
-	$('#lastName-admin').val('');
-	$('#password-admin').val('');
-	$('#admin-password-auth').val('');
-	$('#new-auth-key').val('');
-	$('#veri-auth-key').val('');
+	
 
 	return false;
 });
@@ -72,14 +66,13 @@ $('#input-newUser').on('click', function(){
 	// grabs password inputs to make sure they match.
 	var password = $('#password-signup').val().trim()
 	var passwordValid = $('#signup-password-auth').val().trim()
+	var firstName = $('#firstName-signup').val().trim();
+	var lastName = $('#lastName-signup').val().trim();
+	var userName = $('#userName-signup').val().trim();
+	var authKey = $('#auth-key').val().trim();
 
 	// makes certain that they are using the password they want to use.
-	if(password === passwordValid && password != ''){
-
-		var firstName = $('#firstName-signup').val().trim();
-		var lastName = $('#lastName-signup').val().trim();
-		var userName = $('#userName-signup').val().trim();
-		var authKey = $('#auth-key').val().trim();
+	if(password === passwordValid && password != '' &&(firstName && lastName != '')){
 		
 		$('#signup-modal').modal('toggle');
 
@@ -117,20 +110,28 @@ $('#input-newUser').on('click', function(){
 		return false;
 	}
 	else if(password != passwordValid){
-
+		$('#signup-modal').modal('toggle');
 		$('#didntMatch').modal('toggle');
+	}
+	else{
+		$('#signup-modal').modal('toggle');
+		$('#didntMatch').modal('toggle');
+	}
 
 		return false;
-	}
+	
 });
+
+
+$('.backto').on('click', function(){
+	$('#signup-modal').modal('toggle');
+	return false;
+})
 
 //on-click for signing in
 $('#user-signin').on('click', function(){
 	var userName = $('#inputUserName').val().trim();
 	var password = $('#inputPassword').val().trim();
-
-	$('#inputUserName').val('');
-	$('#inputPassword').val('');
 
 	if(userName == "admin"){
 		$.ajax({
@@ -146,7 +147,7 @@ $('#user-signin').on('click', function(){
 				}
 				else if(response == 'invalid'){
 
-				console.log(response);
+				$('#password-fail-modal').modal('toggle');
 
 				}
 			}
@@ -166,11 +167,11 @@ $('#user-signin').on('click', function(){
 				}
 				else if(response == 'invalid-username'){
 					//modal
-					console.log(response);
+					$('#username-fail-modal').modal('toggle');
 				}
 				else if(response == 'invalid-password'){
 					//modal
-					console.log(response);
+					$('#password-fail-modal').modal('toggle');
 				}
 			}
 		});
