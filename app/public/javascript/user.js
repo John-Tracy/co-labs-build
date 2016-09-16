@@ -155,8 +155,10 @@ var roomMaker = function(rooms){
 
 // generates buttons for the rooms
   for(var i = 0; i < rooms.length; i++){
-  
+  <span class="glyphicon glyphicon-menu-right" style="float: right"></span><
     var li = $('<li class="list-group-item changeRoom" data-index="' + rooms[i]._id + '">').html(rooms[i].name);
+    var span = $('<span class="glyphicon glyphicon-menu-right" style="float: right">');
+    li.append(span);
     $('#roomButtons').append(li);
   }
 // generates room divs
