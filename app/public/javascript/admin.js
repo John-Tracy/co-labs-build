@@ -271,7 +271,7 @@ $('#postEditorSubmit').on('click', function(){
 					$('#' + dbId + 'edit').attr('data-title', newTitle);
 					$('#' + dbId + 'edit').attr('data-body', newBody);
 
-					timDelay = window.setTimeout(closePopover, 2500);
+					timDelay = window.setTimeout(closePopover, 1000);
 
 				};
 
@@ -358,7 +358,7 @@ $('#userEditorSubmit').on('click', function(){
 				function showPopover() {
 					$('#userEditorSubmit').popover('show');
 
-					timDelay = window.setTimeout(closePopover, 2500);
+					timDelay = window.setTimeout(closePopover, 1000);
 
 				};
 
@@ -406,7 +406,7 @@ $('#addNewUser').on('click', function(){
 				function showPopover() {
 					$('#addNewUser').popover('show');
 
-					timDelay = window.setTimeout(closePopover, 2500);
+					timDelay = window.setTimeout(closePopover, 1000);
 
 				};
 
@@ -469,7 +469,7 @@ $('#userEditorDelete').on('click', function(){
 				function showPopover() {
 					$('#userEditorDelete').popover('show');
 
-					timDelay = window.setTimeout(closePopover, 2500);
+					timDelay = window.setTimeout(closePopover, 1000);
 
 				};
 
@@ -618,7 +618,7 @@ $('#adminSetsSubmit').on('click', function(){
 		        function showPopover() {
 		          $('#adminSetsSubmit').popover('show');
 
-		          timDelay = window.setTimeout(closePopover, 2500);
+		          timDelay = window.setTimeout(closePopover, 1000);
 
 		        };
 

@@ -265,7 +265,7 @@ $('#userSetsSubmit').on('click', function(){
         function showPopover() {
           $('#userSetsSubmit').popover('show');
 
-          timDelay = window.setTimeout(closePopover, 2500);
+          timDelay = window.setTimeout(closePopover, 1000);
 
         };
 
