@@ -61,7 +61,7 @@ var messageSender = function(){
             }
           }
          });
-        
+
       }
   
   return false;
@@ -141,7 +141,7 @@ function roomChanger() {
 
 };
   
-$(document).on('click', '.changeRoom', roomChanger)
+$('#roomButtons').on('click', '.changeRoom', roomChanger)
 // room changes ===========================
 
 // generates chat rooms and corresponding buttons
