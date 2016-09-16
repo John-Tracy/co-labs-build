@@ -79,5 +79,17 @@ a:hover, a:visited, a:link {
 	cursor: pointer;
 }
 
+@media (max-width: 768px) {
 
+	#userSettings a, #userLogout a{
+		color: white;
+	}
+
+
+}
+@media (max-width: 991px){
+	#sidenav {
+		padding-bottom: 0px;
+	}
+}
 

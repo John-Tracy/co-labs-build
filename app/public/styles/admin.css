@@ -72,6 +72,12 @@ a:hover, a:visited, a:link {
 		color: white;
 	}
 
+
+}
+@media (max-width: 991px){
+	#sidenav {
+		padding-bottom: 0px;
+	}
 }
 /* night-life color scheme
 	void - #0e0b16
