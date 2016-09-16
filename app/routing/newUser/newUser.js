@@ -17,7 +17,8 @@ module.exports = function(app, db){
 					firstName: firstName, 
 					lastName: lastName,
 					userName: userName,
-					password: password
+					password: password,
+					bgcolor: '#999999'
 				}, function(err, docsTwo){
 					res.json('success');
 				});
@@ -59,7 +60,8 @@ module.exports = function(app, db){
 						firstName: fName,
 						lastName: lName,
 						password: pWord,
-						authKey: authKey
+						authKey: authKey,
+						bgcolor: '#999999'
 						}, 
 						function(err, doc){
 							res.json('success');

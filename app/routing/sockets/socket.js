@@ -14,11 +14,12 @@ app.get('/socketConnect', function(req, res){
 		}
 
 		var fName = capFirst(docs[0].firstName);
-		
+		var color = docs[0].bgcolor;
 
 		res.json({
 			userName: userName,
-			fName: fName
+			fName: fName,
+			color: color
 		
 		})
 	});

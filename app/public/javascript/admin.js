@@ -67,24 +67,25 @@ $('#adminLogout').on('click', function(){
 // admin chat lab manipulation
 
 	//gets list of chat labs to be edited
+function labFetch(){
+		$.ajax({url: currentUrl + '/getLabs', method: 'GET'}).done(function(data){
 
-$.ajax({url: currentUrl + '/getLabs', method: 'GET'}).done(function(data){
+			for(var i = 0; i < data.length; i++){
 
-	for(var i = 0; i < data.length; i++){
+				var li = $('<li class="list-group-item" id="' + data[i]._id + 'li">').html('Lab Name: ' + data[i].name);
+				var p= $('<p class="delMessage">').html('     Delete Chat Lab');
+				var chatNum = $('<span class="badge" data-toggle="tooltip" title="# of messages in lab">').html(data[i].chatLog.length);
+				var delGlyp = $('<span class="glyphicon glyphicon-trash delLab" data-index="' + data[i]._id + '" data-name="' + data[i].name + '">');
 
-		var li = $('<li class="list-group-item" id="' + data[i]._id + 'li">').html('Lab Name: ' + data[i].name);
-		var p= $('<p class="delMessage">').html('     Delete Chat Lab');
-		var chatNum = $('<span class="badge" data-toggle="tooltip" title="# of messages in lab">').html(data[i].chatLog.length);
-		var delGlyp = $('<span class="glyphicon glyphicon-trash delLab" data-index="' + data[i]._id + '" data-name="' + data[i].name + '">');
+				li.append(chatNum);
+				p.prepend(delGlyp);
+				li.append(p);
 
-		li.append(chatNum);
-		p.prepend(delGlyp);
-		li.append(p);
+				$('#labList').append(li);
+			}
 
-		$('#labList').append(li);
-	}
-
-});
+		});
+	}; // end of labFetch()
 
 	// deletes chat lab
 $(document).on('click', '.delLab', function(){
@@ -157,6 +158,7 @@ $('#newLabButton').on('click', function(){
 //==================================
 // Post Edit/Delete logic
 function getBlogPosts(){
+
 	$.ajax({url: currentUrl + '/getPosts', method: 'GET'}).done(function(response){
 
 		if(response[0] != undefined){
@@ -190,6 +192,7 @@ function getBlogPosts(){
 		}
 
 	});
+
 };
 
 	// delete post
@@ -590,6 +593,7 @@ $('#adminSetsSubmit').on('click', function(){
 		var ln = $('#editAdminLn').val().trim();
 		var pw = $('#editAdminPw').val().trim();
 		var ak = $('#editadminAk').val().trim();
+		var color = $('#colorPick').val();
 		var id = $('#adminSetsSubmit').attr('data-index');
 
 		$.ajax({
@@ -601,12 +605,15 @@ $('#adminSetsSubmit').on('click', function(){
 				ln: ln,
 				pw: pw,
 				ak: ak,
-				id: id
+				id: id,
+				color: color
 
 			},
 			success: function(res){
-		      if(res == 1){
+		      if(res.status == 1){
 		        var timeDelay;
+
+		        $('body').css('background-color', res.color);
 
 		        function showPopover() {
 		          $('#adminSetsSubmit').popover('show');
@@ -642,6 +649,7 @@ $('#adminSettings').on('click', function(){
 		$('#editAdminLn').val(res.lastName);
 		$('#editAdminPw').val(res.password);
 		$('#editadminAk').val(res.authKey);
+		$('#colorPick').val(res.bgcolor);
 		$('#adminSetsSubmit').attr('data-index', res._id);
 
 		$('#settingsModal').modal('toggle');
@@ -649,3 +657,13 @@ $('#adminSettings').on('click', function(){
 	});
 
 });
+
+function intialInfo() {
+	$.ajax({url: currentUrl + '/initAdmin', method: 'GET'}).done(function(res){
+		$('body').css('background-color', res);
+	});
+};
+
+intialInfo();
+
+labFetch();

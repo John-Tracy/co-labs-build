@@ -162,7 +162,8 @@ module.exports = function(app, db){
 							firstName: req.body.fn, 
 							lastName: req.body.ln,
 							userName: req.body.un,
-							password: req.body.pw
+							password: req.body.pw,
+							bgcolor: '#999999'
 						}, function(err, docsTwo){
 							res.json('success');
 						});
@@ -180,6 +181,14 @@ module.exports = function(app, db){
 		});	
 
 	});
+
+app.get('/initAdmin', function(req, res){
+
+	db.admin.find({}, function(err, docs){
+		res.json(docs[0].bgcolor);
+	});
+
+});
 
 //=======================================
 //admin/ user settings (GET and POST)
@@ -211,12 +220,16 @@ app.post('/setusersets', function(req, res){
 							firstName: req.body.fn,
 							lastName: req.body.ln,
 							userName: req.body.un,
-							password: req.body.pw	
+							password: req.body.pw,
+							bgcolor: req.body.color	
 
 							}
 						},
 						 function(err, docs){
-								res.json(docs.ok);
+								res.json({
+										status: docs.ok,
+										color: req.body.color
+								});
 						});
 
 
@@ -230,12 +243,15 @@ app.post('/setadminsets', function(req, res){
 							firstName: req.body.fn,
 							lastName: req.body.ln,
 							password: req.body.pw,
-							authKey: req.body.ak	
-
+							authKey: req.body.ak,
+							bgcolor: req.body.color	
 							}
 						},
 						 function(err, docs){
-								res.json(docs.ok);
+								res.json({
+									status: docs.ok,
+									color: req.body.color
+									});
 						});
 
 });

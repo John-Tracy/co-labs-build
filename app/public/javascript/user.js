@@ -10,6 +10,8 @@ $.ajax({url: currentUrl + '/socketConnect', method: 'GET'}).done(function(respon
   socket.userName = response.userName;
 
   socket.emit('online', socket.userName);
+
+  $('body').css('background-color', response.color)
   
   $('#greetingText').html(response.fName);
 });
@@ -223,6 +225,7 @@ $('#userSettings').on('click', function(){
     $('#editUserLn').val(res.lastName);
     $('#editUserUn').val(res.userName);
     $('#editUserPw').val(res.password);
+    $('#colorPick').val(res.bgcolor);
     $('#userSetsSubmit').attr('data-index', res._id);
 
     $('#userSettingsModal').modal('toggle');
@@ -239,6 +242,7 @@ $('#userSetsSubmit').on('click', function(){
   var ln = $('#editUserLn').val().trim();
   var un = $('#editUserUn').val().trim();
   var pw = $('#editUserPw').val().trim();
+  var color = $('#colorPick').val();
   var id = $('#userSetsSubmit').attr('data-index');
 
   $.ajax({
@@ -249,11 +253,14 @@ $('#userSetsSubmit').on('click', function(){
       ln: ln,
       un: un,
       pw: pw,
-      id: id
+      id: id,
+      color: color
     },
     success: function(res){
-      if(res == 1){
+      if(res.status == 1){
         var timeDelay;
+
+        $('body').css('background-color', res.color);
 
         function showPopover() {
           $('#userSetsSubmit').popover('show');
