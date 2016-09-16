@@ -37,28 +37,32 @@ var messageSender = function(){
   
   var chatMessage = $('#' + idNum + 'input').val().trim();
 
-  $('#' + idNum + 'input').val('');
+  if(chatMessage != ''){
 
-  var userName = socket.userName;
+      $('#' + idNum + 'input').val('');
 
-  socket.emit('message', idNum, chatMessage, userName);
+      var userName = socket.userName;
 
-      // sends chat off to be saved
-      // sting is concatnated for DB
-      var fullMes = userName + ': ' + chatMessage;
-    $.ajax({
-      url: currentUrl + '/saveChat',
-      method: 'POST',
-      data: {
-        objId: idNum,
-        message: fullMes
-      },
-      success: function(response){
-        if(response){
-          // saved.
-        }
+      socket.emit('message', idNum, chatMessage, userName);
+
+          // sends chat off to be saved
+          // sting is concatnated for DB
+          var fullMes = userName + ': ' + chatMessage;
+        $.ajax({
+          url: currentUrl + '/saveChat',
+          method: 'POST',
+          data: {
+            objId: idNum,
+            message: fullMes
+          },
+          success: function(response){
+            if(response){
+              // saved.
+            }
+          }
+         });
+        
       }
-     });
   
   return false;
 
