@@ -64,6 +64,9 @@ a:hover, a:visited, a:link {
 #sidenav .list-group-item {
 	cursor: pointer;
 }
+#userTable .userRow {
+	cursor: pointer;
+}
 /* night-life color scheme
 	void - #0e0b16
 	fuschia #a239ca
