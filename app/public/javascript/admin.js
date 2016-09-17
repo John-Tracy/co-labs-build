@@ -421,6 +421,9 @@ $('#addNewUser').on('click', function(){
 				showPopover();
 
 				}
+				else{
+					alert('User name already taken by another user!');
+				}
 			}
 		})
 

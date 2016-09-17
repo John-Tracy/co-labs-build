@@ -1,3 +1,10 @@
+//===============================
+// serves up html files
+// depending on session
+// status (admin||user||not auth)
+//===============================
+
+
 var path = require('path');
 
 module.exports = function(app){

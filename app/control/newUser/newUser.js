@@ -1,3 +1,10 @@
+//=============================
+//new user/admin control
+//file 
+// also for new collabs install
+//=============================
+
+// map object contains all models
 var map = require('../../utils/orm.js');
 
 module.exports = function(app){
@@ -11,7 +18,6 @@ module.exports = function(app){
 		var password = req.body.password;
 		var authKey = req.body.authKey;
 
-	//	db.users.find({"userName": {$in: [userName]}}, function(err, doc){
 					// grabs validation key for initing new users
 		map.userCheckUn(userName, function(dbRes){
 					
@@ -26,30 +32,19 @@ module.exports = function(app){
 							res.json(dbResTres);
 
 						})
-						// db.users.insert({
-						// 	firstName: firstName, 
-						// 	lastName: lastName,
-						// 	userName: userName,
-						// 	password: password,
-						// 	bgcolor: '#d4d4d4'
-						// }, function(err, docsTwo){
-						// 	res.json('success');
-						// });
 					}
 					else{
 						res.json('invalid');
 					}
 				});
-			//	});
+			
 			}
 			else if(dbRes[0] != undefined){
 				res.json('taken');
 			}
 		});
-	//	});
 		
 	});
-
 // ==================================================
 // This Route is for verification that this is or 
 // is not a new instance of Co-Labs.
@@ -81,16 +76,6 @@ module.exports = function(app){
 			res.json(dbRes);
 		})
 
-		// db.admin.insert({
-		// 				firstName: fName,
-		// 				lastName: lName,
-		// 				password: pWord,
-		// 				authKey: authKey,
-		// 				bgcolor: '#d4d4d4'
-		// 				}, 
-		// 				function(err, doc){
-		// 					res.json('success');
-		// 				});
 	});
 // ==================================================
 

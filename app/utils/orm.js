@@ -9,7 +9,9 @@ db.on('error', function(err) {
   console.log('Database Error:', err);
 });
 
-
+//==============================
+// program model
+//==============================
 var map = {
 
 		adminLogin: function (password, callback) {
@@ -22,6 +24,24 @@ var map = {
 
 		},
 
+		updateAdmin: function(fn, ln, pw, ak, col, id, callback) {
+
+			db.admin.update({_id: mongojs.ObjectId(id)}, 
+						{$set: {
+
+							firstName: fn,
+							lastName: ln,
+							password: pw,
+							authKey: ak,
+							bgcolor: col	
+							}
+						},
+						 function(err, docs){
+							callback(docs);
+						});	
+
+		},
+
 		userByUn: function (userName, callback) {
 
 			db.users.find({userName: userName}, function(err, docs){
@@ -29,6 +49,14 @@ var map = {
 				return callback(docs);
 
 			})
+
+		},
+
+		allUsers: function(callback) {
+
+			db.users.find({}, function(err, docs){
+				callback(docs);
+			});
 
 		},
 
@@ -57,14 +85,72 @@ var map = {
 
 		initUser: function (fn, ln, un, pw, callback){
 
-				db.users.insert({
-							firstName: fn, 
+			db.users.insert({
+						firstName: fn, 
+						lastName: ln,
+						userName: un,
+						password: pw,
+						bgcolor: '#d4d4d4' }, function(err, docsTwo){
+							callback('success');
+					});
+
+		},
+
+		deleteUser: function(id, callback) {
+
+			db.users.remove({_id: mongojs.ObjectId(id)}, function(err, docs){
+					callback(docs);
+			});			
+
+		},
+
+		updateUser: function(fn, ln, un, pw, id, callback) {
+
+			db.users.update({_id: mongojs.ObjectId(id)}, 
+						{$set: {
+
+							firstName: fn,
 							lastName: ln,
 							userName: un,
-							password: pw,
-							bgcolor: '#d4d4d4' }, function(err, docsTwo){
-								callback('success');
+							password: pw,	
+
+							}
+						},
+						 function(err, docs){
+								callback(docs.ok);
+						}
+			);
+
+		},
+
+		userSets: function(fn, ln, un, pw, col, id, callback) {
+
+			db.users.update({_id: mongojs.ObjectId(id)}, 
+						{$set: {
+
+								firstName: fn,
+								lastName: ln,
+								userName: un,
+								password: pw,
+								bgcolor: col	
+
+								}
+						},
+						 function(err, docs){
+							callback(docs);
 						});
+		
+
+		},
+
+
+		allPosts: function(callback) {
+
+			db.posts.find({}, function(err, docs){
+
+				callback(docs);
+
+			});
 
 		},
 
@@ -88,10 +174,63 @@ var map = {
 			callback();
 		},
 
+		updatePost: function(objId, title, body, callback) {
+
+			db.posts.update({_id: mongojs.ObjectId(objId)}, 
+							{$set: {
+
+								title: title,
+								body: body
+
+								}
+							},
+							 function(err, docs){
+									callback(docs.ok);
+							});
+
+		},
+
 		deletePost: function(objId, callback) {
 
 			db.posts.remove({_id: mongojs.ObjectId(objId)}, function(err, docs){
 				callback(docs);
+			});
+
+		},
+
+		saveChat: function(objId, message, callback) {
+
+		 	db.rooms.update({_id: mongojs.ObjectId(objId)},{$push: {"chatLog": message}}, function(err, docs){
+	 			callback('success');
+	 		});
+
+		},
+
+		allRooms: function(callback) {
+
+			db.rooms.find({}, function(err, docs){
+				callback(docs);
+			});
+
+		},
+
+		deleteRoom: function(objId, callback) {
+
+			db.rooms.remove({_id: mongojs.ObjectId(objId)}, function(err, docs){
+			
+				callback(docs);
+			
+			});
+
+		},
+
+		newRoom: function(name, callback) {
+
+			db.rooms.insert({
+				name: name,
+				chatLog: []
+			}, function(err, docs){
+				callback(docs)
 			});
 
 		}

@@ -1,3 +1,4 @@
+// map object contains all models
 var map = require('../../utils/orm.js');
 
 module.exports = function(app){

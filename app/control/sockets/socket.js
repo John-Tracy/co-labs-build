@@ -1,3 +1,9 @@
+
+//=========================
+//web socket control file
+//
+//=========================
+
 var map = require('../../utils/orm.js');
 
 module.exports = function(app, io){
@@ -7,7 +13,7 @@ app.get('/socketConnect', function(req, res){
 
 	var userName = req.session.userName;
 
-//	db.users.find({userName: userName}, function(err, docs){
+
 	map.userByUn(userName, function(dbRes){
 
 		function capFirst(string){
@@ -25,7 +31,6 @@ app.get('/socketConnect', function(req, res){
 		})
 
 	});
-//	});
 
 });
 
@@ -36,7 +41,6 @@ io.on('connection', function(socket){
 	var updateUsers = function(array){
 		io.emit('onlineUsers', array);
 	}
-
 
 	// for messages to be emitted to all users
 	socket.on('message', function(idNum, chatMessage, userName){
