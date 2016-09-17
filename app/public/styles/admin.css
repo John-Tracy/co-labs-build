@@ -65,6 +65,9 @@ a:hover, a:visited, a:link {
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
+#top-nav .navbar-brand:hover {
+	cursor: default;
+}
 
 #drop1 {
 	color: #e7dfdd;
