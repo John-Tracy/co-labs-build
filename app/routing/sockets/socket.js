@@ -1,20 +1,21 @@
-var path = require('path');
+var map = require('../../utils/orm.js');
 
-module.exports = function(app, db, io){
+module.exports = function(app, io){
 
 // retrieving data for socket client to use
 app.get('/socketConnect', function(req, res){
 
 	var userName = req.session.userName;
 
-	db.users.find({userName: userName}, function(err, docs){
+//	db.users.find({userName: userName}, function(err, docs){
+	map.userByUn(userName, function(dbRes){
 
 		function capFirst(string){
 			return string.charAt(0).toUpperCase() + string.slice(1);
 		}
 
-		var fName = capFirst(docs[0].firstName);
-		var color = docs[0].bgcolor;
+		var fName = capFirst(dbRes[0].firstName);
+		var color = dbRes[0].bgcolor;
 
 		res.json({
 			userName: userName,
@@ -22,10 +23,11 @@ app.get('/socketConnect', function(req, res){
 			color: color
 		
 		})
+
 	});
+//	});
 
 });
-
 
 var nickNames = []; // this array holds current users online to be sent all client sockets for display
 // io socket listener for on connenction
@@ -45,9 +47,14 @@ io.on('connection', function(socket){
 
 	//  emit new online user
 	socket.on('online', function(userName){
-		socket.nickName = userName;
-		nickNames.push(userName);
-		updateUsers(nickNames);
+		
+		if(nickNames.indexOf(userName) == -1){
+			socket.nickName = userName;
+			nickNames.push(userName);
+			updateUsers(nickNames);
+		}else{
+			updateUsers(nickNames);
+		}
 
 	});
 
@@ -57,7 +64,6 @@ io.on('connection', function(socket){
 		io.emit('refreshBlog');
 
 	});
-
 
 	// when client socket side disconnects
 	  socket.on('disconnect', function(){

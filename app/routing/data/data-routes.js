@@ -1,4 +1,6 @@
 var mongojs = require('mongojs');
+var map = require('../../utils/orm.js');
+
 
 module.exports = function(app, db){
 //post routes
@@ -6,24 +8,31 @@ module.exports = function(app, db){
 	// saves blog post in database
 	app.post('/savePost', function(req, res){
 
-		db.posts.insert({
-			title: req.body.postTitle,
-			body: req.body.postBody,
-			comments: []
-		});
+		var title = req.body.postTitle;
+		var body = req.body.postBody;
+		// db.posts.insert({
+		// 	title: req.body.postTitle,
+		// 	body: req.body.postBody,
+		// 	comments: []
+		// });
+		map.savePost(title, body, function(dbRes){
 
-		res.json('success');
+			res.json('success');
+
+		});
 
 	});
 
 	// deletes post for DB
 	app.post('/deletePost', function(req, res){
 
-		db.posts.remove({_id: mongojs.ObjectId(req.body.objId)}, function(err, docs){
-			if(docs.ok == 1 || docs.n == 1){
+		//db.posts.remove({_id: mongojs.ObjectId(req.body.objId)}, function(err, docs){
+		map.deletePost(req.body.objId, function(dbRes){
+			if(dbRes.ok == 1 || dbRes.n == 1){
 				res.json('deleted');
 			}
 		});
+		//});
 
 	});
 
@@ -45,7 +54,6 @@ module.exports = function(app, db){
 
 	});
 
-
 //===============================================================
 	// saves chat logs
 	app.post('/saveChat', function(req, res){
@@ -65,9 +73,6 @@ module.exports = function(app, db){
 		});
 
 	});
-
-
-
 
 	// retrieves blog posts for user view
 	app.get('/getPosts', function(req, res){
@@ -116,8 +121,7 @@ module.exports = function(app, db){
 					_id: docs._id
 				});
 			}
-			
-			
+						
 		});
 
 	});
@@ -232,7 +236,6 @@ app.post('/setusersets', function(req, res){
 								});
 						});
 
-
 });
 
 app.post('/setadminsets', function(req, res){
@@ -257,9 +260,4 @@ app.post('/setadminsets', function(req, res){
 });
 //=======================================
 
-
 };
-
-
-
-

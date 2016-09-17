@@ -27,8 +27,8 @@ var io = require('socket.io')(http);
 
 // Database configuration
 var mongojs = require('mongojs');
-//var databaseUrl = 'colabs' //local use
-var databaseUrl = 'mongodb://heroku_zn9vl4pb:8tepj5i8cbe62civkraoduvoc7@ds027896.mlab.com:27896/heroku_zn9vl4pb'; // heroku deployment use
+var databaseUrl = 'colabs' //local use
+//var databaseUrl = 'mongodb://heroku_zn9vl4pb:8tepj5i8cbe62civkraoduvoc7@ds027896.mlab.com:27896/heroku_zn9vl4pb'; // heroku deployment use
 var collections = ['admin', 'users', 'posts', 'rooms'];
 //  mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
@@ -40,9 +40,10 @@ db.on('error', function(err) {
 // ===========================================================
 require('./app/routing/data/data-routes.js')(app, db);
 require('./app/routing/html/html-routes.js')(app);
-require('./app/routing/userAuth/auth.js')(app, db);
-require('./app/routing/newUser/newUser.js')(app, db);
-require('./app/routing/sockets/socket.js')(app, db, io);
+require('./app/routing/userAuth/auth.js')(app);
+require('./app/routing/newUser/newUser.js')(app);
+require('./app/routing/sockets/socket.js')(app, io);
+
 
 // Starts the server 
 // =============================================================

@@ -53,8 +53,6 @@ $('#input-newAdmin').on('click', function(){
 });
 // ==================================================
 
-
-
 // on-click for sign-up modal
 $('#new-user').on('click', function(){
 	$('#signup-modal').modal('toggle');
@@ -83,8 +81,6 @@ $('#input-newUser').on('click', function(){
 		$('#signup-password-auth').val('');
 		$('#password-signup').val('');
 
-
-
 		$.ajax({
 			url: currentUrl + '/newUser',
 			method: 'POST',
@@ -102,10 +98,12 @@ $('#input-newUser').on('click', function(){
 				else if(response == 'invalid'){
 					$('#sign-fail-modal').modal('toggle');
 				}
+				else if(response == 'taken'){
+					$('#un-taken').modal('toggle');
+				}
 			}
 
 		});
-
 
 		return false;
 	}
@@ -121,7 +119,6 @@ $('#input-newUser').on('click', function(){
 		return false;
 	
 });
-
 
 $('.backto').on('click', function(){
 	$('#signup-modal').modal('toggle');

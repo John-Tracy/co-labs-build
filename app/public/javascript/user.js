@@ -17,7 +17,6 @@ $.ajax({url: currentUrl + '/socketConnect', method: 'GET'}).done(function(respon
 });
 
 // socket ==============================================
-
 if(socket != undefined){
   socket.on('onlineUsers', function(nickNames){
     $('#userPool').empty();
@@ -46,7 +45,6 @@ var messageSender = function(){
       socket.emit('message', idNum, chatMessage, userName);
 
           // sends chat off to be saved
-          // sting is concatnated for DB
           var fullMes = userName + ': ' + chatMessage;
         $.ajax({
           url: currentUrl + '/saveChat',
@@ -68,14 +66,6 @@ var messageSender = function(){
 
 };
 
-// $.fn.scrollView = function () {
-//   return this.each(function () {
-//     $('.panel-body').animate({
-//       scrollTop: $(this).offset().top
-//     }, 500);
-//   });
-// }
-// these directly use eachother... ^^^
 $(document).on('click', '.sendMes', messageSender);
 
 if(socket != undefined){
@@ -94,7 +84,6 @@ if(socket != undefined){
   });
 }
 // socket stuff end ===============================================
-
 
 // gets and generates data for news panel
 var blogMaker = function(data){
@@ -129,7 +118,6 @@ function updateBlog(){
 }
 // end news data stuff
 
-
 // room changes ===========================
 function roomChanger() {
 
@@ -146,7 +134,6 @@ $('#roomButtons').on('click', '.changeRoom', roomChanger)
 
 // generates chat rooms and corresponding buttons
 var roomMaker = function(rooms){
-// these stings are used 
   
     var isHidden = function(param){
       if(param == 0){
@@ -175,8 +162,7 @@ var roomMaker = function(rooms){
       var headingDiv = $('<div class="panel-heading">').append(h3);
 
       var bodyDiv = $('<div class="panel-body">').attr('id', rooms[i]._id + 'body');
-
-              
+      
         // gets chatLog for each rooms iteration
         for(var x = 0; x < rooms[i].chatLog.length; x++){
 
@@ -185,8 +171,6 @@ var roomMaker = function(rooms){
           bodyDiv.append(tempP);
 
         }
-
-       
 
       var form = $('<form>');
       var formButton = $('<button type="submit" class="btn btn-default sendMes" data-index="' + rooms[i]._id + '">').html('Send');
@@ -209,9 +193,6 @@ var roomMaker = function(rooms){
 
       bodyDiv.scrollTop(bodyDiv[0].scrollHeight);
     }
-
-
-
 
 }
 
@@ -291,9 +272,6 @@ $('#userSetsSubmit').on('click', function(){
   });
 
 });
-
-
-
 
 // user logout
 $('#userLogout').on('click', function(){

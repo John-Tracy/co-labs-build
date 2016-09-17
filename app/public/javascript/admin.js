@@ -38,8 +38,6 @@ $('#postNews').on('click', function(){
 
 });
 
-
-
 // clears post inputs
 $('#clearPostInputs').on('click', function(){
 
@@ -116,9 +114,7 @@ $(document).on('click', '.delLab', function(){
 
 });
 
-
 	// creates new chat lab
-
 $('#newLabButton').on('click', function(){
 	var labName = $('#newLabInput').val().trim();
 	$('#newLabInput').val('');
@@ -152,8 +148,6 @@ $('#newLabButton').on('click', function(){
 	return false
 });
 //=============================
-
-
 
 //==================================
 // Post Edit/Delete logic
@@ -294,8 +288,6 @@ $('#postEditorSubmit').on('click', function(){
 		}
 	})
 });
-
-
 //==================================
 
 //==================================
@@ -436,8 +428,6 @@ $('#addNewUser').on('click', function(){
 
 return false;
 });
-
-
 	// clears inputs on add new user field
 $('#clearNewUserInputs').on('click', function(){
 
@@ -449,8 +439,6 @@ $('#clearNewUserInputs').on('click', function(){
 	return false;
 
 });
-
-
 //===========
 // user delete
 $('#userEditorDelete').on('click', function(){
@@ -533,12 +521,7 @@ $('#editUsers').on('click', function(){
 	openUserEditor();
 
 });
-
-
-
 //==================================
-
-
 
 // switching admin panes through side nav clicks
 
