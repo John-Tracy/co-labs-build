@@ -2,10 +2,10 @@ body {
 	padding-top: 100px; 
 	height: 100%;
 	width: 100%;
-	background-color: #ffffff;
-	color: #999999;
+	background-color: #999999;
+	color: #efefef;
 
-	background: url("../styles/collab.jpg") top left no-repeat;
+	background: url("../styles/collab4.gif") top right repeat;
 	
 
 }
@@ -14,6 +14,8 @@ h2 {
 	text-align: center;
 	margin-top: 5%;
 	margin-bottom: 5%;
+	text-transform: uppercase;
+	letter-spacing: 2px;
 }
 .navbar {
 	background-color: none;

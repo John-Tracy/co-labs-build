@@ -5,20 +5,19 @@
 	<title>Co-labs | User</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../styles/user.css">
-
 </head>
 <body>
 <div class="container-fluid" id="container-main">
 	<div class="row">
 		<div class="col-md-12">
 			<nav class="navbar navbar-default" id="top-nav"> 
-			  <div class="container-fluid">
+			  <div class="container-fluid" id="nav-contain">
 			    <div class="navbar-header">
 			      <a class="navbar-brand" href="#">
 			        <p>Co-labs</p>
 			      </a>
 			    </div>
-				<ul class="nav navbar-nav navbar-right"> 
+				<ul class="nav navbar-nav navbar-right" id="greeting"> 
 					<li id="fat-menu" class="dropdown"> <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Hello, <span id="greetingText"></span> <span class="caret"></span> </a>
 					 <ul class="dropdown-menu" aria-labelledby="drop1"> 
 					 	<li id="userSettings"><a href="#">Account 
@@ -74,7 +73,7 @@
 		</div><!-- col holds nav controls -->
 		<div class="col-md-5">
 			<div class="row">
-				<div class="col-md-12" id="roomHolder">
+				<div class="col-md-11" id="roomHolder">
 					
 					<!-- dynamically generated chat rooms go here -->
 
@@ -84,7 +83,7 @@
 		<div class="col-md-5">
 			<div class="row">
 				<div class="col-md-11">
-					<div class="panel panel-default chat-box">
+					<div class="panel panel-default " id="newsBox">
 						<div class="panel-heading">
 							<h3 class="panel-title">News</h3>
 						</div>

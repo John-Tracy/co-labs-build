@@ -1,9 +1,6 @@
 body {
 	background-color: #d4d4d4;
 }
-.panel-default{
-
-}
 #container-main {
 	padding-right: 0;
 	padding-left: 0;
@@ -24,8 +21,14 @@ body {
 #sidenav {
 	background-color: #777777;
 	height: 100%;
-	padding-bottom: 100px;
-	padding-top: 1.75%;
+	padding-bottom: 2000px;
+	margin-bottom: -2000px;
+	overflow: hidden;
+	padding-top: 2%;
+}
+
+#greeting {
+	float: right;
 }
 
 #sidenav-main-ul li {
@@ -38,14 +41,13 @@ body {
 }
 .chat-box {
 	margin-top: 5%;
+	margin-left: 7%;
 	width: 100%;
 
 }
 .chat-box .panel-body {
 	height: 300px;
 	overflow-y: auto;
-	
-	
 }
 #news-content {
 	height: 355px;
@@ -59,17 +61,32 @@ a:hover, a:visited, a:link {
 }
 
 .navbar-default {
-	background-color: #777777;
+	background-color: #333333;
+	border-left: none;
+	border-right: none;
 	border-radius: 0;
 
 }
 
 #top-nav .navbar-brand{
 	color: #e7dfdd;
+	padding-left: 30px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+#top-nav .navbar-brand:hover{
+	cursor: default;
 }
 
 #drop1 {
 	color: #e7dfdd;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+#nav-contain{
+	padding-right: 0px;
+	padding-left: 0px;
 }
 
 .glyphicon-globe {
@@ -78,18 +95,36 @@ a:hover, a:visited, a:link {
 .changeRoom:hover {
 	cursor: pointer;
 }
+#newsBox{
+	margin-top: 5.40%;
+	width: 100%;
+}
+#newsBox .panel-body {
+	
+	overflow-y: auto;
+}
+
+@media (max-width: 991px){
+
+	#sidenav {
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+		overflow: initial;
+	}
+	.chat-box {
+		margin-left: auto;
+	}
+}
 
 @media (max-width: 768px) {
 
 	#userSettings a, #userLogout a{
 		color: white;
 	}
-
-
-}
-@media (max-width: 991px){
-	#sidenav {
-		padding-bottom: 0px;
+	.chat-box {
+		margin-left: auto;
 	}
+	
 }
+
 
