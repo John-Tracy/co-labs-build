@@ -1,7 +1,24 @@
 // Database configuration
 var mongojs = require('mongojs');
-var databaseUrl = 'colabs' //local use
-//var databaseUrl = 'mongodb://heroku_zn9vl4pb:8tepj5i8cbe62civkraoduvoc7@ds027896.mlab.com:27896/heroku_zn9vl4pb'; // heroku deployment use
+
+//======================================
+//var databaseUrl = 'colabs' //local use
+//	use this variable for a local 
+//	instance of your mongoDB for
+//	dev purposes
+//======================================
+
+//======================================
+var databaseUrl = 'mongodb://heroku_zn9vl4pb:8tepj5i8cbe62civkraoduvoc7@ds027896.mlab.com:27896/heroku_zn9vl4pb';
+// heroku deployment use
+//	Don't want to change anything, 
+//	plug in a mongo DB URI in the above
+//	variable, deploy files then follow the 
+// 	on screen prompts
+// 	to set your default instance of
+//	CO-LABS!!!!!!!!!!!!!!!!!!!!!!!!!!
+//======================================
+
 var collections = ['admin', 'users', 'posts', 'rooms'];
 //  mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
